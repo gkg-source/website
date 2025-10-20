@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ghar Ka Guide - Your trusted partner for financial planning and investment guidance. AI-powered budget optimization, investment analysis, and personalized financial advice for Indian families.">
+    <meta name="keywords" content="financial planning, budget optimization, investment guide, AI financial assistant, personal finance India, wealth management, financial tools">
+    <meta name="author" content="Ghar Ka Guide Private Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ghar Ka Guide - Smart Financial Planning for Your Home">
+    <meta property="og:description" content="AI-powered financial tools to optimize your budget, make smart investments, and secure your family's financial future.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://gharkaguide.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ghar Ka Guide">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ghar Ka Guide - Smart Financial Planning">
+    <meta name="twitter:description" content="AI-powered financial tools for Indian families">
+    <meta name="twitter:image" content="logo.png">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ghar Ka Guide",
+        "description": "AI-powered financial planning and investment guidance platform",
+        "url": "https://gharkaguide.com",
+        "logo": "logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-XXX-XXX-XXXX",
+            "contactType": "customer service",
+            "email": "info@gharkaguide.com"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mumbai",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+        }
+    }
+    </script>
+    
+    <title>Ghar Ka Guide - Financial Planning & Investment Tools</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Ghar Ka Guide" class="logo-img">
+                    <h2>Ghar Ka Guide</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tools" class="nav-link">Finance Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link btn-login">Login</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Smart Financial Planning for Your Home</h1>
+                <p class="hero-description">
+                    Ghar Ka Guide provides cutting-edge financial tools to help you optimize your budget, 
+                    make smart investments, and secure your family's financial future.
+                </p>
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn btn-primary">Get Started</a>
+                    <a href="#tools" class="btn btn-secondary">Explore Tools</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-logo-container">
+                    <img src="logo.png" alt="Ghar Ka Guide Logo" class="hero-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Ghar Ka Guide</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Ghar Ka Guide Private Limited is your trusted partner in financial planning and investment guidance. 
+                        We believe every family deserves access to professional financial tools that help them make informed 
+                        decisions for a secure future.
+                    </p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Budget Optimization</h3>
+                            <p>AI-powered tools to maximize your savings</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Investment Guidance</h3>
+                            <p>Expert advice for smart investment decisions</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-robot"></i>
+                            <h3>AI Chatbot</h3>
+                            <p>24/7 financial guidance and support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Happy Families</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="2500000000">0</div>
+                    <div class="stat-label">₹ Saved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finance Tools Section -->
+    <section id="tools" class="tools">
+        <div class="container">
+            <h2 class="section-title">Our Finance Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Budget Optimizer</h3>
+                    <p>Advanced algorithms to analyze your spending patterns and suggest optimal budget allocations for maximum savings.</p>
+                    <a href="budget-optimizer.html" class="btn btn-primary">Use Tool</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Guide</h3>
+                    <p>Comprehensive investment analysis and recommendations based on your risk profile and financial goals.</p>
+                    <a href="investment-guide.html" class="btn btn-primary">Use Tool</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Financial Assistant</h3>
+                    <p>Get instant answers to your financial questions and personalized advice through our intelligent chatbot.</p>
+                    <button class="btn btn-primary" onclick="openChatbot()">Chat Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Ghar Ka Guide helped me save ₹50,000 more this year! The budget optimizer is incredible and the AI assistant answered all my investment questions."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <span>Software Engineer, Bangalore</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"As a new investor, I was confused about where to start. The Investment Guide gave me perfect recommendations based on my risk profile. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <span>Business Owner, Delhi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The AI chatbot is amazing! It's like having a personal financial advisor available 24/7. My family's financial planning has never been easier."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Anita Patel</h4>
+                            <span>Teacher, Mumbai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@gharkaguide.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 (XXX) XXX-XXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Mumbai, Maharashtra, India</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>Stay Updated with Financial Tips</h3>
+                    <p>Get weekly insights, market updates, and exclusive financial planning tips delivered to your inbox.</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="newsletter-input-group">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                    <div class="newsletter-privacy">
+                        <small>We respect your privacy. Unsubscribe at any time.</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Ghar Ka Guide" class="footer-logo-img">
+                        <h3>Ghar Ka Guide</h3>
+                    </div>
+                    <p>Empowering families with smart financial tools and expert guidance for a secure future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#tools">Finance Tools</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Tools</h3>
+                    <ul>
+                        <li><a href="budget-optimizer.html">Budget Optimizer</a></li>
+                        <li><a href="investment-guide.html">Investment Guide</a></li>
+                        <li><a href="#" onclick="openChatbot()">AI Assistant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ghar Ka Guide Private Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" onclick="openChatbot()">
+        <i class="fas fa-comments"></i>
+        <span>Ask AI</span>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div id="chatbotModal" class="chatbot-modal">
+        <div class="chatbot-content">
+            <div class="chatbot-header">
+                <h3><i class="fas fa-robot"></i> AI Financial Assistant</h3>
+                <button class="close-btn" onclick="closeChatbot()">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    <p>Hello! I'm your AI financial assistant. How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your financial question..." onkeypress="handleChatbotInput(event)">
+                <button onclick="sendChatbotMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

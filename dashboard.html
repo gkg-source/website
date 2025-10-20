@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard - Ghar Ka Guide Finance Tools. Access your personalized financial overview, budget insights, and investment portfolio">
+    <meta name="keywords" content="dashboard, financial overview, budget insights, investment portfolio, personal finance">
+    <meta name="author" content="Ghar Ka Guide Private Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dashboard - Ghar Ka Guide">
+    <meta property="og:description" content="Access your personalized financial overview and tools">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://gharkaguide.com/dashboard">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Dashboard - Ghar Ka Guide">
+    <meta name="twitter:description" content="Your financial overview">
+    <meta name="twitter:image" content="logo.png">
+    
+    <title>Dashboard - Ghar Ka Guide</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Ghar Ka Guide" class="logo-img">
+                    <h2>Ghar Ka Guide</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tools" class="nav-link">Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link">Profile</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <span>Welcome, User</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <h3>Finance Tools</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="sidebar-item active">
+                        <a href="#overview" onclick="showSection('overview')">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#budget-optimizer" onclick="showSection('budget-optimizer')">
+                            <i class="fas fa-calculator"></i>
+                            <span>Budget Optimizer</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#investment-guide" onclick="showSection('investment-guide')">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Investment Guide</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#ai-assistant" onclick="showSection('ai-assistant')">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Assistant</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#profile" onclick="showSection('profile')">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h1>Financial Overview</h1>
+                    <p>Welcome back! Here's a summary of your financial health</p>
+                </div>
+                
+                <div class="overview-cards">
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Savings</h3>
+                            <p class="card-amount">₹2,45,000</p>
+                            <span class="card-change positive">+12.5% from last month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Monthly Budget</h3>
+                            <p class="card-amount">₹45,000</p>
+                            <span class="card-change">₹38,500 spent (85.6%)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Investment Returns</h3>
+                            <p class="card-amount">₹12,800</p>
+                            <span class="card-change positive">+8.2% this year</span>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Goals Progress</h3>
+                            <p class="card-amount">3/5</p>
+                            <span class="card-change">60% completed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="showSection('budget-optimizer')">
+                            <i class="fas fa-calculator"></i>
+                            Optimize Budget
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('investment-guide')">
+                            <i class="fas fa-chart-line"></i>
+                            Investment Advice
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('ai-assistant')">
+                            <i class="fas fa-robot"></i>
+                            Ask AI
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Budget Optimizer Section -->
+            <section id="budget-optimizer" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Budget Optimizer</h1>
+                    <p>AI-powered budget analysis and optimization recommendations</p>
+                </div>
+                
+                <div class="tool-container">
+                    <div class="tool-info">
+                        <h3>How it works</h3>
+                        <p>Our advanced algorithm analyzes your spending patterns and suggests optimal budget allocations to maximize your savings while maintaining your lifestyle.</p>
+                    </div>
+                    
+                    <div class="budget-form">
+                        <h3>Enter Your Financial Data</h3>
+                        <form id="budgetForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Monthly Income</label>
+                                    <input type="number" id="monthlyIncome" placeholder="₹" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Monthly Expenses</label>
+                                    <input type="number" id="monthlyExpenses" placeholder="₹" required>
+                                </div>
+                            </div>
+                            
+                            <div class="expense-categories">
+                                <h4>Expense Categories</h4>
+                                <div class="category-inputs">
+                                    <div class="category-input">
+                                        <label>Housing</label>
+                                        <input type="number" id="housing" placeholder="₹">
+                                    </div>
+                                    <div class="category-input">
+                                        <label>Food</label>
+                                        <input type="number" id="food" placeholder="₹">
+                                    </div>
+                                    <div class="category-input">
+                                        <label>Transportation</label>
+                                        <input type="number" id="transportation" placeholder="₹">
+                                    </div>
+                                    <div class="category-input">
+                                        <label>Entertainment</label>
+                                        <input type="number" id="entertainment" placeholder="₹">
+                                    </div>
+                                    <div class="category-input">
+                                        <label>Utilities</label>
+                                        <input type="number" id="utilities" placeholder="₹">
+                                    </div>
+                                    <div class="category-input">
+                                        <label>Others</label>
+                                        <input type="number" id="others" placeholder="₹">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-magic"></i>
+                                Optimize Budget
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="optimization-results" id="optimizationResults" style="display: none;">
+                        <h3>Optimization Results</h3>
+                        <div class="results-content">
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Guide Section -->
+            <section id="investment-guide" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Investment Guide</h1>
+                    <p>Personalized investment recommendations based on your risk profile and goals</p>
+                </div>
+                
+                <div class="tool-container">
+                    <div class="tool-info">
+                        <h3>Investment Analysis</h3>
+                        <p>Get expert investment advice tailored to your financial situation, risk tolerance, and long-term goals.</p>
+                    </div>
+                    
+                    <div class="investment-form">
+                        <h3>Investment Profile</h3>
+                        <form id="investmentForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Investment Amount</label>
+                                    <input type="number" id="investmentAmount" placeholder="₹" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Investment Horizon</label>
+                                    <select id="investmentHorizon" required>
+                                        <option value="">Select time period</option>
+                                        <option value="1-3">1-3 years</option>
+                                        <option value="3-5">3-5 years</option>
+                                        <option value="5-10">5-10 years</option>
+                                        <option value="10+">10+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Risk Tolerance</label>
+                                <div class="risk-slider">
+                                    <input type="range" id="riskTolerance" min="1" max="5" value="3">
+                                    <div class="risk-labels">
+                                        <span>Conservative</span>
+                                        <span>Moderate</span>
+                                        <span>Aggressive</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Investment Goals</label>
+                                <div class="goal-checkboxes">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" value="retirement">
+                                        <span class="checkmark"></span>
+                                        Retirement Planning
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" value="education">
+                                        <span class="checkmark"></span>
+                                        Education Fund
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" value="house">
+                                        <span class="checkmark"></span>
+                                        House Purchase
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" value="emergency">
+                                        <span class="checkmark"></span>
+                                        Emergency Fund
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-chart-line"></i>
+                                Get Recommendations
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="investment-results" id="investmentResults" style="display: none;">
+                        <h3>Investment Recommendations</h3>
+                        <div class="results-content">
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Assistant Section -->
+            <section id="ai-assistant" class="dashboard-section">
+                <div class="section-header">
+                    <h1>AI Financial Assistant</h1>
+                    <p>Get instant answers to your financial questions and personalized advice</p>
+                </div>
+                
+                <div class="chatbot-container">
+                    <div class="chatbot-header">
+                        <h3><i class="fas fa-robot"></i> AI Financial Assistant</h3>
+                        <p>Ask me anything about personal finance, investments, or budgeting</p>
+                    </div>
+                    
+                    <div class="chatbot-messages" id="dashboardChatbotMessages">
+                        <div class="message bot-message">
+                            <p>Hello! I'm your AI financial assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chatbot-input">
+                        <input type="text" id="dashboardChatbotInput" placeholder="Type your financial question..." onkeypress="handleDashboardChatbotInput(event)">
+                        <button onclick="sendDashboardChatbotMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="quick-questions">
+                        <h4>Quick Questions</h4>
+                        <div class="question-chips">
+                            <button class="question-chip" onclick="askQuickQuestion('How can I save more money?')">How can I save more money?</button>
+                            <button class="question-chip" onclick="askQuickQuestion('What are good investment options?')">What are good investment options?</button>
+                            <button class="question-chip" onclick="askQuickQuestion('How to create a budget?')">How to create a budget?</button>
+                            <button class="question-chip" onclick="askQuickQuestion('Emergency fund tips?')">Emergency fund tips?</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Profile Settings</h1>
+                    <p>Manage your account and preferences</p>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <h3>Personal Information</h3>
+                        <form id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="profileName" value="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="profileEmail" value="john@example.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" id="profilePhone" value="+91 98765 43210">
+                                </div>
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" id="profileLocation" value="Mumbai, Maharashtra">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-preferences">
+                        <h3>Preferences</h3>
+                        <div class="preference-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                Email notifications
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                Weekly financial reports
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Investment alerts
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthStatus();
+        });
+
+        // Authentication check
+        function checkAuthStatus() {
+            const token = localStorage.getItem('authToken');
+            const userData = localStorage.getItem('userData');
+            
+            if (!token || !userData) {
+                // Redirect to login if not authenticated
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Verify token with backend
+            fetch('http://localhost:5000/api/auth/verify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    // Token invalid, redirect to login
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userData');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Update UI with user data
+                updateUserInterface(data.user);
+            })
+            .catch(error => {
+                console.error('Auth verification error:', error);
+                // Network error, redirect to login
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('userData');
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Update UI with user data
+        function updateUserInterface(user) {
+            // Update welcome message
+            const welcomeSpan = document.querySelector('.user-info span');
+            if (welcomeSpan) {
+                welcomeSpan.textContent = `Welcome, ${user.name}`;
+            }
+            
+            // Update profile form with user data
+            const profileName = document.getElementById('profileName');
+            const profileEmail = document.getElementById('profileEmail');
+            const profilePhone = document.getElementById('profilePhone');
+            
+            if (profileName) profileName.value = user.name;
+            if (profileEmail) profileEmail.value = user.email;
+            if (profilePhone) profilePhone.value = user.phone;
+            
+            // Update overview cards with user profile data
+            updateOverviewCards(user.profile);
+        }
+
+        // Update overview cards with real data
+        function updateOverviewCards(profile) {
+            const income = profile.income || 500000;
+            const monthlyIncome = income / 12;
+            const monthlyExpenses = monthlyIncome * 0.7; // Assume 70% expenses
+            const monthlySavings = monthlyIncome - monthlyExpenses;
+            const totalSavings = monthlySavings * 12; // Annual savings
+            
+            // Update savings card
+            const savingsCard = document.querySelector('.overview-card:nth-child(1) .card-amount');
+            if (savingsCard) {
+                savingsCard.textContent = `₹${totalSavings.toLocaleString()}`;
+            }
+            
+            // Update budget card
+            const budgetCard = document.querySelector('.overview-card:nth-child(2) .card-amount');
+            if (budgetCard) {
+                budgetCard.textContent = `₹${monthlyIncome.toLocaleString()}`;
+            }
+            
+            // Update investment card (placeholder)
+            const investmentCard = document.querySelector('.overview-card:nth-child(3) .card-amount');
+            if (investmentCard) {
+                const investmentReturn = totalSavings * 0.08; // Assume 8% return
+                investmentCard.textContent = `₹${investmentReturn.toLocaleString()}`;
+            }
+        }
+
+        // Dashboard functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find and activate corresponding sidebar item
+            const sidebarItem = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
+            if (sidebarItem) {
+                sidebarItem.parentElement.classList.add('active');
+            }
+        }
+
+        // Budget optimization form handling
+        document.getElementById('budgetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const income = document.getElementById('monthlyIncome').value;
+            const expenses = document.getElementById('monthlyExpenses').value;
+            
+            // Show results (this would typically call your Python backend)
+            showBudgetResults(income, expenses);
+        });
+
+        function showBudgetResults(income, expenses) {
+            const resultsDiv = document.getElementById('optimizationResults');
+            const resultsContent = resultsDiv.querySelector('.results-content');
+            
+            const savings = income - expenses;
+            const savingsRate = ((savings / income) * 100).toFixed(1);
+            
+            resultsContent.innerHTML = `
+                <div class="result-summary">
+                    <h4>Budget Analysis Summary</h4>
+                    <div class="result-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Monthly Income:</span>
+                            <span class="metric-value">₹${income}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Monthly Expenses:</span>
+                            <span class="metric-value">₹${expenses}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Monthly Savings:</span>
+                            <span class="metric-value">₹${savings}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Savings Rate:</span>
+                            <span class="metric-value">${savingsRate}%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="optimization-suggestions">
+                    <h4>Optimization Suggestions</h4>
+                    <ul>
+                        <li>Consider reducing discretionary spending by 15% to increase savings</li>
+                        <li>Set up automatic transfers to savings account</li>
+                        <li>Review subscription services monthly</li>
+                        <li>Create an emergency fund with 3-6 months of expenses</li>
+                    </ul>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        // Investment form handling
+        document.getElementById('investmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = document.getElementById('investmentAmount').value;
+            const horizon = document.getElementById('investmentHorizon').value;
+            const risk = document.getElementById('riskTolerance').value;
+            
+            showInvestmentResults(amount, horizon, risk);
+        });
+
+        function showInvestmentResults(amount, horizon, risk) {
+            const resultsDiv = document.getElementById('investmentResults');
+            const resultsContent = resultsDiv.querySelector('.results-content');
+            
+            let riskProfile = '';
+            let recommendations = '';
+            
+            if (risk <= 2) {
+                riskProfile = 'Conservative';
+                recommendations = `
+                    <li>Fixed Deposits (40%)</li>
+                    <li>Government Bonds (30%)</li>
+                    <li>Blue-chip Stocks (20%)</li>
+                    <li>Gold ETFs (10%)</li>
+                `;
+            } else if (risk <= 4) {
+                riskProfile = 'Moderate';
+                recommendations = `
+                    <li>Equity Mutual Funds (50%)</li>
+                    <li>Fixed Deposits (25%)</li>
+                    <li>Government Bonds (15%)</li>
+                    <li>Gold ETFs (10%)</li>
+                `;
+            } else {
+                riskProfile = 'Aggressive';
+                recommendations = `
+                    <li>Equity Mutual Funds (70%)</li>
+                    <li>Direct Stocks (20%)</li>
+                    <li>Gold ETFs (10%)</li>
+                `;
+            }
+            
+            resultsContent.innerHTML = `
+                <div class="result-summary">
+                    <h4>Investment Profile</h4>
+                    <div class="result-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Risk Profile:</span>
+                            <span class="metric-value">${riskProfile}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Investment Amount:</span>
+                            <span class="metric-value">₹${amount}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Time Horizon:</span>
+                            <span class="metric-value">${horizon} years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="investment-recommendations">
+                    <h4>Recommended Portfolio Allocation</h4>
+                    <ul>
+                        ${recommendations}
+                    </ul>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        // Chatbot functionality
+        function handleDashboardChatbotInput(event) {
+            if (event.key === 'Enter') {
+                sendDashboardChatbotMessage();
+            }
+        }
+
+        function sendDashboardChatbotMessage() {
+            const input = document.getElementById('dashboardChatbotInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addDashboardChatbotMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response (this would call your Python chatbot)
+                setTimeout(() => {
+                    const aiResponse = generateAIResponse(message);
+                    addDashboardChatbotMessage(aiResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addDashboardChatbotMessage(message, sender) {
+            const messagesContainer = document.getElementById('dashboardChatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = `<p>${message}</p>`;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateAIResponse(userMessage) {
+            const responses = {
+                'save money': 'To save more money, try the 50/30/20 rule: 50% for needs, 30% for wants, 20% for savings. Also, automate your savings and track all expenses.',
+                'investment': 'Good investment options include mutual funds, fixed deposits, government bonds, and gold ETFs. Your choice depends on risk tolerance and time horizon.',
+                'budget': 'Create a budget by tracking income, categorizing expenses, setting spending limits, and reviewing monthly. Use our Budget Optimizer tool for detailed analysis.',
+                'emergency fund': 'Aim for 3-6 months of expenses in your emergency fund. Start small and build gradually. Keep it in a separate, easily accessible account.'
+            };
+            
+            const lowerMessage = userMessage.toLowerCase();
+            for (const [key, response] of Object.entries(responses)) {
+                if (lowerMessage.includes(key)) {
+                    return response;
+                }
+            }
+            
+            return "I'd be happy to help with your financial question. Could you please provide more specific details about what you'd like to know?";
+        }
+
+        function askQuickQuestion(question) {
+            document.getElementById('dashboardChatbotInput').value = question;
+            sendDashboardChatbotMessage();
+        }
+
+        // Profile form handling
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                showNotification('Authentication required', 'error');
+                return;
+            }
+            
+            const formData = {
+                name: document.getElementById('profileName').value,
+                phone: document.getElementById('profilePhone').value,
+                profile: {
+                    age: 30, // You can add age input field
+                    income: 750000, // You can add income input field
+                    risk_tolerance: 'moderate',
+                    investment_experience: 'intermediate'
+                }
+            };
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+            submitBtn.disabled = true;
+            
+            // Update profile via API
+            fetch('http://localhost:5000/api/auth/profile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification('Profile updated successfully!', 'success');
+                    // Update stored user data
+                    const currentUserData = JSON.parse(localStorage.getItem('userData'));
+                    const updatedUserData = { ...currentUserData, ...formData };
+                    localStorage.setItem('userData', JSON.stringify(updatedUserData));
+                } else {
+                    showNotification(data.error || 'Profile update failed', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Profile update error:', error);
+                showNotification('Network error. Please try again.', 'error');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Logout functionality
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                const token = localStorage.getItem('authToken');
+                
+                // Call logout API
+                if (token) {
+                    fetch('http://localhost:5000/api/auth/logout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }).catch(error => console.error('Logout API error:', error));
+                }
+                
+                // Clear local storage and redirect
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('userData');
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-message">${message}</span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 5000);
+            
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            });
+        }
+    </script>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

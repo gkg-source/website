@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Investment Guide - Personalized investment recommendations and portfolio planning. Get AI-powered investment advice tailored to your risk profile and financial goals">
+    <meta name="keywords" content="investment guide, portfolio planning, investment recommendations, risk assessment, financial planning, AI investment advice">
+    <meta name="author" content="Ghar Ka Guide Private Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Investment Guide - Ghar Ka Guide">
+    <meta property="og:description" content="Personalized investment recommendations and portfolio planning">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://gharkaguide.com/investment-guide">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Investment Guide - Ghar Ka Guide">
+    <meta name="twitter:description" content="Personalized investment recommendations">
+    <meta name="twitter:image" content="logo.png">
+    
+    <title>Investment Guide - Ghar Ka Guide</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="tool-body">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Ghar Ka Guide" class="logo-img">
+                    <h2>Ghar Ka Guide</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="budget-optimizer.html" class="nav-link">Budget Optimizer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#investment-guide" class="nav-link active">Investment Guide</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tool Header -->
+    <div class="tool-header">
+        <div class="container">
+            <h1><i class="fas fa-chart-line"></i> Investment Guide</h1>
+            <p>Get personalized investment recommendations based on your risk profile, goals, and financial situation</p>
+        </div>
+    </div>
+
+    <!-- Main Tool Content -->
+    <div class="tool-main">
+        <div class="container">
+            <div class="tool-grid">
+                <!-- Input Section -->
+                <div class="tool-input-section">
+                    <div class="input-card">
+                        <h3><i class="fas fa-edit"></i> Investment Profile Assessment</h3>
+                        <form id="investmentGuideForm">
+                            <div class="basic-info">
+                                <h4>Basic Information</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Investment Amount</label>
+                                        <input type="number" id="investmentAmount" placeholder="₹" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Monthly Investment Capacity</label>
+                                        <input type="number" id="monthlyInvestment" placeholder="₹">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Investment Horizon</label>
+                                        <select id="investmentHorizon" required>
+                                            <option value="">Select time period</option>
+                                            <option value="1-3">1-3 years (Short-term)</option>
+                                            <option value="3-5">3-5 years (Medium-term)</option>
+                                            <option value="5-10">5-10 years (Long-term)</option>
+                                            <option value="10+">10+ years (Very long-term)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Age Group</label>
+                                        <select id="ageGroup" required>
+                                            <option value="">Select age group</option>
+                                            <option value="18-25">18-25 years</option>
+                                            <option value="26-35">26-35 years</option>
+                                            <option value="36-45">36-45 years</option>
+                                            <option value="46-55">46-55 years</option>
+                                            <option value="55+">55+ years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="risk-assessment">
+                                <h4>Risk Tolerance Assessment</h4>
+                                <div class="risk-questions">
+                                    <div class="risk-question">
+                                        <p>1. How would you react if your investment lost 20% of its value in a year?</p>
+                                        <div class="risk-options">
+                                            <label class="radio-label">
+                                                <input type="radio" name="q1" value="1">
+                                                <span class="radio-custom"></span>
+                                                I would be very concerned and likely sell
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q1" value="2">
+                                                <span class="radio-custom"></span>
+                                                I would be concerned but hold on
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q1" value="3">
+                                                <span class="radio-custom"></span>
+                                                I would be somewhat concerned but stay invested
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q1" value="4">
+                                                <span class="radio-custom"></span>
+                                                I would see it as a buying opportunity
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q1" value="5">
+                                                <span class="radio-custom"></span>
+                                                I would be excited about the opportunity
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="risk-question">
+                                        <p>2. What is your primary investment goal?</p>
+                                        <div class="risk-options">
+                                            <label class="radio-label">
+                                                <input type="radio" name="q2" value="1">
+                                                <span class="radio-custom"></span>
+                                                Preserve capital with minimal risk
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q2" value="2">
+                                                <span class="radio-custom"></span>
+                                                Generate steady income
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q2" value="3">
+                                                <span class="radio-custom"></span>
+                                                Balanced growth and income
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q2" value="4">
+                                                <span class="radio-custom"></span>
+                                                Maximize long-term growth
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q2" value="5">
+                                                <span class="radio-custom"></span>
+                                                Aggressive wealth building
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="risk-question">
+                                        <p>3. How much time can you dedicate to managing your investments?</p>
+                                        <div class="risk-options">
+                                            <label class="radio-label">
+                                                <input type="radio" name="q3" value="1">
+                                                <span class="radio-custom"></span>
+                                                Very little time (set and forget)
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q3" value="2">
+                                                <span class="radio-custom"></span>
+                                                Some time for basic monitoring
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q3" value="3">
+                                                <span class="radio-custom"></span>
+                                                Moderate time for regular review
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q3" value="4">
+                                                <span class="radio-custom"></span>
+                                                Significant time for active management
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q3" value="5">
+                                                <span class="radio-custom"></span>
+                                                Full-time dedication to investing
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="risk-question">
+                                        <p>4. What percentage of your total wealth are you willing to risk?</p>
+                                        <div class="risk-options">
+                                            <label class="radio-label">
+                                                <input type="radio" name="q4" value="1">
+                                                <span class="radio-custom"></span>
+                                                0-5% (Very conservative)
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q4" value="2">
+                                                <span class="radio-custom"></span>
+                                                5-15% (Conservative)
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q4" value="3">
+                                                <span class="radio-custom"></span>
+                                                15-30% (Moderate)
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q4" value="4">
+                                                <span class="radio-custom"></span>
+                                                30-50% (Aggressive)
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="q4" value="5">
+                                                <span class="radio-custom"></span>
+                                                50%+ (Very aggressive)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="investment-goals">
+                                <h4>Investment Goals</h4>
+                                <div class="goals-grid">
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="retirement">
+                                            <span class="checkmark"></span>
+                                            Retirement Planning
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="education">
+                                            <span class="checkmark"></span>
+                                            Education Fund
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="house">
+                                            <span class="checkmark"></span>
+                                            House Purchase
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="emergency">
+                                            <span class="checkmark"></span>
+                                            Emergency Fund
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="wealth">
+                                            <span class="checkmark"></span>
+                                            Wealth Building
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="income">
+                                            <span class="checkmark"></span>
+                                            Passive Income
+                                        </label>
+                                        <input type="number" placeholder="Monthly Target (₹)" class="goal-amount">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-chart-line"></i>
+                                Get Investment Recommendations
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="tool-results-section">
+                    <div class="results-card" id="resultsCard" style="display: none;">
+                        <h3><i class="fas fa-chart-pie"></i> Investment Analysis Results</h3>
+                        
+                        <div class="risk-profile">
+                            <h4>Your Risk Profile</h4>
+                            <div class="risk-indicator">
+                                <div class="risk-bar">
+                                    <div class="risk-fill" id="riskFill"></div>
+                                </div>
+                                <div class="risk-labels">
+                                    <span>Conservative</span>
+                                    <span>Moderate</span>
+                                    <span>Aggressive</span>
+                                </div>
+                                <div class="risk-score" id="riskScore">Score: 0</div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-recommendation">
+                            <h4>Recommended Portfolio Allocation</h4>
+                            <div class="portfolio-chart" id="portfolioChart">
+                                <!-- Portfolio chart will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="investment-recommendations">
+                            <h4>Specific Investment Recommendations</h4>
+                            <div class="recommendations-list" id="recommendationsList">
+                                <!-- Recommendations will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="investment-strategy">
+                            <h4>Investment Strategy</h4>
+                            <div class="strategy-content" id="strategyContent">
+                                <!-- Strategy will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="risk-warnings">
+                            <h4>Risk Considerations</h4>
+                            <div class="warnings-list" id="warningsList">
+                                <!-- Warnings will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="export-options">
+                            <h4>Export & Share</h4>
+                            <div class="export-buttons">
+                                <button class="btn btn-secondary" onclick="exportToPDF()">
+                                    <i class="fas fa-file-pdf"></i>
+                                    Export to PDF
+                                </button>
+                                <button class="btn btn-secondary" onclick="shareResults()">
+                                    <i class="fas fa-share"></i>
+                                    Share Results
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips-card">
+                        <h3><i class="fas fa-lightbulb"></i> Investment Tips</h3>
+                        <div class="tips-list">
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Start investing early to benefit from compound interest</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Diversify your portfolio across different asset classes</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Invest regularly through SIPs for rupee cost averaging</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Review and rebalance your portfolio annually</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Don't invest money you might need in the next 3-5 years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Form submission handling
+        document.getElementById('investmentGuideForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Calculate risk score
+            const riskScore = calculateRiskScore();
+            
+            // Get form data
+            const amount = parseFloat(document.getElementById('investmentAmount').value);
+            const monthlyInvestment = parseFloat(document.getElementById('monthlyInvestment').value) || 0;
+            const horizon = document.getElementById('investmentHorizon').value;
+            const ageGroup = document.getElementById('ageGroup').value;
+            
+            // Generate recommendations
+            generateInvestmentRecommendations(riskScore, amount, monthlyInvestment, horizon, ageGroup);
+        });
+
+        function validateForm() {
+            const requiredFields = ['investmentAmount', 'investmentHorizon', 'ageGroup'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value) {
+                    field.style.borderColor = '#f44336';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#e1e5e9';
+                }
+            });
+            
+            // Check if at least one risk question is answered
+            const questions = ['q1', 'q2', 'q3', 'q4'];
+            let questionsAnswered = 0;
+            
+            questions.forEach(q => {
+                const radios = document.querySelectorAll(`input[name="${q}"]`);
+                radios.forEach(radio => {
+                    if (radio.checked) questionsAnswered++;
+                });
+            });
+            
+            if (questionsAnswered < 4) {
+                alert('Please answer all risk assessment questions');
+                return false;
+            }
+            
+            return isValid;
+        }
+
+        function calculateRiskScore() {
+            const questions = ['q1', 'q2', 'q3', 'q4'];
+            let totalScore = 0;
+            
+            questions.forEach(q => {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected) {
+                    totalScore += parseInt(selected.value);
+                }
+            });
+            
+            return totalScore;
+        }
+
+        function generateInvestmentRecommendations(riskScore, amount, monthlyInvestment, horizon, ageGroup) {
+            // Determine risk profile
+            let riskProfile, riskLevel;
+            if (riskScore <= 8) {
+                riskProfile = 'Conservative';
+                riskLevel = 1;
+            } else if (riskScore <= 12) {
+                riskProfile = 'Moderate-Conservative';
+                riskLevel = 2;
+            } else if (riskScore <= 16) {
+                riskProfile = 'Moderate';
+                riskLevel = 3;
+            } else if (riskScore <= 20) {
+                riskProfile = 'Moderate-Aggressive';
+                riskLevel = 4;
+            } else {
+                riskProfile = 'Aggressive';
+                riskLevel = 5;
+            }
+            
+            // Update risk profile display
+            updateRiskProfile(riskScore, riskProfile, riskLevel);
+            
+            // Generate portfolio allocation
+            generatePortfolioAllocation(riskLevel, amount, monthlyInvestment, horizon, ageGroup);
+            
+            // Generate specific recommendations
+            generateSpecificRecommendations(riskLevel, amount, horizon);
+            
+            // Generate investment strategy
+            generateInvestmentStrategy(riskLevel, horizon, ageGroup);
+            
+            // Generate risk warnings
+            generateRiskWarnings(riskLevel, amount, horizon);
+            
+            // Show results
+            document.getElementById('resultsCard').style.display = 'block';
+            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateRiskProfile(score, profile, level) {
+            document.getElementById('riskScore').textContent = `Score: ${score} (${profile})`;
+            
+            const riskFill = document.getElementById('riskFill');
+            const percentage = ((level - 1) / 4) * 100;
+            riskFill.style.width = `${percentage}%`;
+            
+            // Color coding based on risk level
+            if (level <= 2) {
+                riskFill.style.backgroundColor = '#4CAF50'; // Green
+            } else if (level <= 3) {
+                riskFill.style.backgroundColor = '#FF9800'; // Orange
+            } else {
+                riskFill.style.backgroundColor = '#f44336'; // Red
+            }
+        }
+
+        function generatePortfolioAllocation(riskLevel, amount, monthlyInvestment, horizon, ageGroup) {
+            let allocation;
+            
+            if (riskLevel <= 2) { // Conservative
+                allocation = [
+                    { asset: 'Fixed Deposits', percentage: 40, color: '#4CAF50' },
+                    { asset: 'Government Bonds', percentage: 30, color: '#2196F3' },
+                    { asset: 'Blue-chip Stocks', percentage: 20, color: '#FF9800' },
+                    { asset: 'Gold ETFs', percentage: 10, color: '#FFD700' }
+                ];
+            } else if (riskLevel <= 3) { // Moderate
+                allocation = [
+                    { asset: 'Equity Mutual Funds', percentage: 50, color: '#FF9800' },
+                    { asset: 'Fixed Deposits', percentage: 25, color: '#4CAF50' },
+                    { asset: 'Government Bonds', percentage: 15, color: '#2196F3' },
+                    { asset: 'Gold ETFs', percentage: 10, color: '#FFD700' }
+                ];
+            } else { // Aggressive
+                allocation = [
+                    { asset: 'Equity Mutual Funds', percentage: 70, color: '#FF9800' },
+                    { asset: 'Direct Stocks', percentage: 20, color: '#f44336' },
+                    { asset: 'Gold ETFs', percentage: 10, color: '#FFD700' }
+                ];
+            }
+            
+            let chartHTML = '<div class="portfolio-container">';
+            allocation.forEach(item => {
+                const amountValue = (amount * item.percentage / 100).toLocaleString();
+                chartHTML += `
+                    <div class="portfolio-item">
+                        <div class="asset-info">
+                            <div class="asset-color" style="background-color: ${item.color}"></div>
+                            <div class="asset-details">
+                                <span class="asset-name">${item.asset}</span>
+                                <span class="asset-percentage">${item.percentage}%</span>
+                            </div>
+                        </div>
+                        <div class="asset-amount">₹${amountValue}</div>
+                    </div>
+                `;
+            });
+            chartHTML += '</div>';
+            
+            document.getElementById('portfolioChart').innerHTML = chartHTML;
+        }
+
+        function generateSpecificRecommendations(riskLevel, amount, horizon) {
+            let recommendations = [];
+            
+            if (riskLevel <= 2) { // Conservative
+                recommendations = [
+                    {
+                        type: 'Fixed Deposits',
+                        description: 'High-yield fixed deposits from top banks (7-8% returns)',
+                        allocation: '40%',
+                        risk: 'Very Low',
+                        liquidity: 'Medium'
+                    },
+                    {
+                        type: 'Government Bonds',
+                        description: 'Sovereign Gold Bonds and government securities (6-7% returns)',
+                        allocation: '30%',
+                        risk: 'Very Low',
+                        liquidity: 'Medium'
+                    },
+                    {
+                        type: 'Blue-chip Stocks',
+                        description: 'Large-cap stocks with stable dividends (8-10% returns)',
+                        allocation: '20%',
+                        risk: 'Low',
+                        liquidity: 'High'
+                    },
+                    {
+                        type: 'Gold ETFs',
+                        description: 'Gold ETFs for inflation protection (5-7% returns)',
+                        allocation: '10%',
+                        risk: 'Low',
+                        liquidity: 'High'
+                    }
+                ];
+            } else if (riskLevel <= 3) { // Moderate
+                recommendations = [
+                    {
+                        type: 'Equity Mutual Funds',
+                        description: 'Large and mid-cap mutual funds (12-15% returns)',
+                        allocation: '50%',
+                        risk: 'Medium',
+                        liquidity: 'High'
+                    },
+                    {
+                        type: 'Fixed Deposits',
+                        description: 'Fixed deposits and corporate bonds (7-9% returns)',
+                        allocation: '25%',
+                        risk: 'Low',
+                        liquidity: 'Medium'
+                    },
+                    {
+                        type: 'Government Bonds',
+                        description: 'Government securities and PSU bonds (6-8% returns)',
+                        allocation: '15%',
+                        risk: 'Very Low',
+                        liquidity: 'Medium'
+                    },
+                    {
+                        type: 'Gold ETFs',
+                        description: 'Gold ETFs and international funds (8-12% returns)',
+                        allocation: '10%',
+                        risk: 'Medium',
+                        liquidity: 'High'
+                    }
+                ];
+            } else { // Aggressive
+                recommendations = [
+                    {
+                        type: 'Equity Mutual Funds',
+                        description: 'Multi-cap and sector-specific funds (15-20% returns)',
+                        allocation: '70%',
+                        risk: 'High',
+                        liquidity: 'High'
+                    },
+                    {
+                        type: 'Direct Stocks',
+                        description: 'Carefully selected growth stocks (18-25% returns)',
+                        allocation: '20%',
+                        risk: 'Very High',
+                        liquidity: 'High'
+                    },
+                    {
+                        type: 'Gold ETFs',
+                        description: 'Gold ETFs and international equity funds (10-15% returns)',
+                        allocation: '10%',
+                        risk: 'Medium',
+                        liquidity: 'High'
+                    }
+                ];
+            }
+            
+            let recommendationsHTML = '';
+            recommendations.forEach(rec => {
+                recommendationsHTML += `
+                    <div class="recommendation-item">
+                        <div class="rec-header">
+                            <h5>${rec.type}</h5>
+                            <span class="rec-allocation">${rec.allocation}</span>
+                        </div>
+                        <p class="rec-description">${rec.description}</p>
+                        <div class="rec-metrics">
+                            <span class="rec-risk">Risk: ${rec.risk}</span>
+                            <span class="rec-liquidity">Liquidity: ${rec.liquidity}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('recommendationsList').innerHTML = recommendationsHTML;
+        }
+
+        function generateInvestmentStrategy(riskLevel, horizon, ageGroup) {
+            let strategy = '';
+            
+            if (riskLevel <= 2) { // Conservative
+                strategy = `
+                    <h5>Conservative Investment Strategy</h5>
+                    <ul>
+                        <li><strong>Focus:</strong> Capital preservation and steady income</li>
+                        <li><strong>Approach:</strong> Buy and hold with regular rebalancing</li>
+                        <li><strong>Frequency:</strong> Quarterly portfolio review</li>
+                        <li><strong>Rebalancing:</strong> Annual rebalancing to maintain asset allocation</li>
+                        <li><strong>Monitoring:</strong> Focus on income generation and stability</li>
+                    </ul>
+                `;
+            } else if (riskLevel <= 3) { // Moderate
+                strategy = `
+                    <h5>Balanced Investment Strategy</h5>
+                    <ul>
+                        <li><strong>Focus:</strong> Balanced growth and income generation</li>
+                        <li><strong>Approach:</strong> Systematic investment with periodic rebalancing</li>
+                        <li><strong>Frequency:</strong> Monthly SIP contributions, quarterly review</li>
+                        <li><strong>Rebalancing:</strong> Semi-annual rebalancing</li>
+                        <li><strong>Monitoring:</strong> Track performance against benchmarks</li>
+                    </ul>
+                `;
+            } else { // Aggressive
+                strategy = `
+                    <h5>Growth-Oriented Investment Strategy</h5>
+                    <ul>
+                        <li><strong>Focus:</strong> Maximum capital appreciation</li>
+                        <li><strong>Approach:</strong> Active management with tactical allocation</li>
+                        <li><strong>Frequency:</strong> Weekly monitoring, monthly review</li>
+                        <li><strong>Rebalancing:</strong> Quarterly rebalancing based on market conditions</li>
+                        <li><strong>Monitoring:</strong> Active tracking of individual investments</li>
+                    </ul>
+                `;
+            }
+            
+            // Add time horizon considerations
+            strategy += `
+                <h5>Time Horizon Considerations</h5>
+                <ul>
+                    <li><strong>${horizon} years:</strong> ${getHorizonAdvice(horizon)}</li>
+                    <li><strong>Age Factor:</strong> ${getAgeAdvice(ageGroup)}</li>
+                </ul>
+            `;
+            
+            document.getElementById('strategyContent').innerHTML = strategy;
+        }
+
+        function getHorizonAdvice(horizon) {
+            const advice = {
+                '1-3': 'Focus on capital preservation and short-term instruments',
+                '3-5': 'Balanced approach with moderate risk for growth',
+                '5-10': 'Growth-oriented with some risk tolerance',
+                '10+': 'Maximum growth potential with higher risk tolerance'
+            };
+            return advice[horizon] || 'Consider your specific goals and timeline';
+        }
+
+        function getAgeAdvice(ageGroup) {
+            const advice = {
+                '18-25': 'High risk tolerance, focus on growth investments',
+                '26-35': 'Moderate-high risk, balance growth and stability',
+                '36-45': 'Moderate risk, focus on balanced portfolio',
+                '46-55': 'Moderate-conservative, prepare for retirement',
+                '55+': 'Conservative approach, preserve capital and generate income'
+            };
+            return advice[ageGroup] || 'Consider your financial situation and goals';
+        }
+
+        function generateRiskWarnings(riskLevel, amount, horizon) {
+            let warnings = [];
+            
+            if (riskLevel >= 4) {
+                warnings.push({
+                    level: 'High',
+                    message: 'High-risk investments may experience significant volatility and potential losses.',
+                    action: 'Ensure you have adequate emergency funds before investing.'
+                });
+            }
+            
+            if (horizon === '1-3') {
+                warnings.push({
+                    level: 'Medium',
+                    message: 'Short-term investments may not provide adequate time for market recovery.',
+                    action: 'Consider more conservative options for short-term goals.'
+                });
+            }
+            
+            if (amount > 1000000) { // 10 lakhs
+                warnings.push({
+                    level: 'Medium',
+                    message: 'Large investment amounts require careful diversification.',
+                    action: 'Consider spreading investments across multiple asset classes and providers.'
+                });
+            }
+            
+            let warningsHTML = '';
+            warnings.forEach(warning => {
+                warningsHTML += `
+                    <div class="warning-item warning-${warning.level.toLowerCase()}">
+                        <div class="warning-header">
+                            <span class="warning-level">${warning.level} Risk</span>
+                        </div>
+                        <p class="warning-message">${warning.message}</p>
+                        <p class="warning-action"><strong>Action:</strong> ${warning.action}</p>
+                    </div>
+                `;
+            });
+            
+            if (warnings.length === 0) {
+                warningsHTML = '<p class="no-warnings">No significant risk warnings for your profile.</p>';
+            }
+            
+            document.getElementById('warningsList').innerHTML = warningsHTML;
+        }
+
+        function exportToPDF() {
+            alert('PDF export functionality will be implemented with backend integration');
+        }
+
+        function shareResults() {
+            alert('Share functionality will be implemented with backend integration');
+        }
+    </script>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

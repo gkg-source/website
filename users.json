@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Demo User",
+      "email": "demo@gharkaguide.com",
+      "phone": "+91 98765 43210",
+      "password": "$2b$10$rQZ8K9mN2pL4vX7cF1hJ3qR5tY8uI6oP9sA2dE4fG7hK1mN3pQ5rT8uI6oP9",
+      "created_at": "2024-01-01T00:00:00Z",
+      "last_login": "2024-01-15T10:30:00Z",
+      "profile": {
+        "age": 30,
+        "income": 750000,
+        "risk_tolerance": "moderate",
+        "investment_experience": "intermediate"
+      }
+    }
+  ],
+  "sessions": []
+}
+

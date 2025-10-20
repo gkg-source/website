@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Budget Optimizer - AI-powered budget analysis and optimization. Get personalized recommendations to maximize your savings and optimize your spending">
+    <meta name="keywords" content="budget optimizer, AI budget analysis, personal finance, savings optimization, expense tracking">
+    <meta name="author" content="Ghar Ka Guide Private Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Budget Optimizer - Ghar Ka Guide">
+    <meta property="og:description" content="AI-powered budget analysis and optimization">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://gharkaguide.com/budget-optimizer">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Budget Optimizer - Ghar Ka Guide">
+    <meta name="twitter:description" content="AI-powered budget analysis">
+    <meta name="twitter:image" content="logo.png">
+    
+    <title>Budget Optimizer - Ghar Ka Guide</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="tool-body">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Ghar Ka Guide" class="logo-img">
+                    <h2>Ghar Ka Guide</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#budget-optimizer" class="nav-link active">Budget Optimizer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="investment-guide.html" class="nav-link">Investment Guide</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tool Header -->
+    <div class="tool-header">
+        <div class="container">
+            <h1><i class="fas fa-calculator"></i> Budget Optimizer</h1>
+            <p>AI-powered budget analysis and optimization recommendations to maximize your savings</p>
+        </div>
+    </div>
+
+    <!-- Main Tool Content -->
+    <div class="tool-main">
+        <div class="container">
+            <div class="tool-grid">
+                <!-- Input Section -->
+                <div class="tool-input-section">
+                    <div class="input-card">
+                        <h3><i class="fas fa-edit"></i> Enter Your Financial Data</h3>
+                        <form id="budgetOptimizerForm">
+                            <div class="income-section">
+                                <h4>Income Sources</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Primary Income</label>
+                                        <input type="number" id="primaryIncome" placeholder="₹" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Secondary Income</label>
+                                        <input type="number" id="secondaryIncome" placeholder="₹">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Other Income</label>
+                                        <input type="number" id="otherIncome" placeholder="₹">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Monthly Income</label>
+                                        <input type="number" id="totalIncome" placeholder="₹" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="expenses-section">
+                                <h4>Expense Categories</h4>
+                                <div class="expense-grid">
+                                    <div class="expense-category">
+                                        <label>Housing & Rent</label>
+                                        <input type="number" id="housing" placeholder="₹">
+                                        <span class="category-tip">Rent, mortgage, maintenance</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Food & Groceries</label>
+                                        <input type="number" id="food" placeholder="₹">
+                                        <span class="category-tip">Groceries, dining out</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Transportation</label>
+                                        <input type="number" id="transportation" placeholder="₹">
+                                        <span class="category-tip">Fuel, public transport, maintenance</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Utilities</label>
+                                        <input type="number" id="utilities" placeholder="₹">
+                                        <span class="category-tip">Electricity, water, internet, phone</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Healthcare</label>
+                                        <input type="number" id="healthcare" placeholder="₹">
+                                        <span class="category-tip">Insurance, medicines, checkups</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Entertainment</label>
+                                        <input type="number" id="entertainment" placeholder="₹">
+                                        <span class="category-tip">Movies, hobbies, subscriptions</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Education</label>
+                                        <input type="number" id="education" placeholder="₹">
+                                        <span class="category-tip">Courses, books, training</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Personal Care</label>
+                                        <input type="number" id="personalCare" placeholder="₹">
+                                        <span class="category-tip">Clothing, grooming, wellness</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Debt Payments</label>
+                                        <input type="number" id="debtPayments" placeholder="₹">
+                                        <span class="category-tip">Credit cards, loans, EMIs</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Savings & Investments</label>
+                                        <input type="number" id="savings" placeholder="₹">
+                                        <span class="category-tip">Current savings rate</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Emergency Fund</label>
+                                        <input type="number" id="emergencyFund" placeholder="₹">
+                                        <span class="category-tip">Monthly contribution</span>
+                                    </div>
+                                    <div class="expense-category">
+                                        <label>Miscellaneous</label>
+                                        <input type="number" id="miscellaneous" placeholder="₹">
+                                        <span class="category-tip">Other expenses</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="total-expenses">
+                                    <label>Total Monthly Expenses</label>
+                                    <input type="number" id="totalExpenses" placeholder="₹" readonly>
+                                </div>
+                            </div>
+
+                            <div class="financial-goals">
+                                <h4>Financial Goals</h4>
+                                <div class="goals-grid">
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="emergency-fund">
+                                            <span class="checkmark"></span>
+                                            Build Emergency Fund
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="debt-free">
+                                            <span class="checkmark"></span>
+                                            Become Debt Free
+                                        </label>
+                                        <input type="number" placeholder="Target Amount (₹)" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="savings">
+                                            <span class="checkbox"></span>
+                                            Increase Savings Rate
+                                        </label>
+                                        <input type="number" placeholder="Target %" class="goal-amount">
+                                    </div>
+                                    <div class="goal-item">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" value="investment">
+                                            <span class="checkmark"></span>
+                                            Start Investing
+                                        </label>
+                                        <input type="number" placeholder="Monthly Amount (₹)" class="goal-amount">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-magic"></i>
+                                Analyze & Optimize Budget
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="tool-results-section">
+                    <div class="results-card" id="resultsCard" style="display: none;">
+                        <h3><i class="fas fa-chart-pie"></i> Budget Analysis Results</h3>
+                        
+                        <div class="results-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">Monthly Income</span>
+                                <span class="summary-value" id="summaryIncome">₹0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Monthly Expenses</span>
+                                <span class="summary-value" id="summaryExpenses">₹0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Monthly Savings</span>
+                                <span class="summary-value" id="summarySavings">₹0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Savings Rate</span>
+                                <span class="summary-value" id="summarySavingsRate">0%</span>
+                            </div>
+                        </div>
+
+                        <div class="expense-breakdown">
+                            <h4>Expense Breakdown</h4>
+                            <div class="breakdown-chart" id="breakdownChart">
+                                <!-- Chart will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="optimization-suggestions">
+                            <h4>Optimization Suggestions</h4>
+                            <div class="suggestions-list" id="suggestionsList">
+                                <!-- Suggestions will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="action-plan">
+                            <h4>30-Day Action Plan</h4>
+                            <div class="action-steps" id="actionSteps">
+                                <!-- Action steps will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="export-options">
+                            <h4>Export & Share</h4>
+                            <div class="export-buttons">
+                                <button class="btn btn-secondary" onclick="exportToPDF()">
+                                    <i class="fas fa-file-pdf"></i>
+                                    Export to PDF
+                                </button>
+                                <button class="btn btn-secondary" onclick="shareResults()">
+                                    <i class="fas fa-share"></i>
+                                    Share Results
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips-card">
+                        <h3><i class="fas fa-lightbulb"></i> Budgeting Tips</h3>
+                        <div class="tips-list">
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Track every expense for at least 30 days to identify spending patterns</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Use the 50/30/20 rule: 50% needs, 30% wants, 20% savings</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Automate your savings to ensure consistency</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Review and adjust your budget monthly</p>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Build an emergency fund covering 3-6 months of expenses</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Auto-calculate total income
+        function calculateTotalIncome() {
+            const primary = parseFloat(document.getElementById('primaryIncome').value) || 0;
+            const secondary = parseFloat(document.getElementById('secondaryIncome').value) || 0;
+            const other = parseFloat(document.getElementById('otherIncome').value) || 0;
+            const total = primary + secondary + other;
+            document.getElementById('totalIncome').value = total;
+            return total;
+        }
+
+        // Auto-calculate total expenses
+        function calculateTotalExpenses() {
+            const categories = ['housing', 'food', 'transportation', 'utilities', 'healthcare', 
+                              'entertainment', 'education', 'personalCare', 'debtPayments', 
+                              'savings', 'emergencyFund', 'miscellaneous'];
+            
+            let total = 0;
+            categories.forEach(category => {
+                const value = parseFloat(document.getElementById(category).value) || 0;
+                total += value;
+            });
+            
+            document.getElementById('totalExpenses').value = total;
+            return total;
+        }
+
+        // Add event listeners for auto-calculation
+        ['primaryIncome', 'secondaryIncome', 'otherIncome'].forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateTotalIncome);
+        });
+
+        ['housing', 'food', 'transportation', 'utilities', 'healthcare', 'entertainment', 
+         'education', 'personalCare', 'debtPayments', 'savings', 'emergencyFund', 'miscellaneous'].forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateTotalExpenses);
+        });
+
+        // Form submission handling
+        document.getElementById('budgetOptimizerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const income = calculateTotalIncome();
+            const expenses = calculateTotalExpenses();
+            
+            if (income === 0) {
+                alert('Please enter your income information');
+                return;
+            }
+            
+            if (expenses === 0) {
+                alert('Please enter your expense information');
+                return;
+            }
+            
+            analyzeBudget(income, expenses);
+        });
+
+        function analyzeBudget(income, expenses) {
+            const savings = income - expenses;
+            const savingsRate = ((savings / income) * 100).toFixed(1);
+            
+            // Update summary
+            document.getElementById('summaryIncome').textContent = `₹${income.toLocaleString()}`;
+            document.getElementById('summaryExpenses').textContent = `₹${expenses.toLocaleString()}`;
+            document.getElementById('summarySavings').textContent = `₹${savings.toLocaleString()}`;
+            document.getElementById('summarySavingsRate').textContent = `${savingsRate}%`;
+            
+            // Generate expense breakdown chart
+            generateExpenseBreakdown();
+            
+            // Generate optimization suggestions
+            generateOptimizationSuggestions(income, expenses, savings, savingsRate);
+            
+            // Generate action plan
+            generateActionPlan(income, expenses, savings, savingsRate);
+            
+            // Show results
+            document.getElementById('resultsCard').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateExpenseBreakdown() {
+            const categories = [
+                { id: 'housing', label: 'Housing', color: '#FF6B6B' },
+                { id: 'food', label: 'Food', color: '#4ECDC4' },
+                { id: 'transportation', label: 'Transportation', color: '#45B7D1' },
+                { id: 'utilities', label: 'Utilities', color: '#96CEB4' },
+                { id: 'healthcare', label: 'Healthcare', color: '#FFEAA7' },
+                { id: 'entertainment', label: 'Entertainment', color: '#DDA0DD' },
+                { id: 'education', label: 'Education', color: '#98D8C8' },
+                { id: 'personalCare', label: 'Personal Care', color: '#F7DC6F' },
+                { id: 'debtPayments', label: 'Debt Payments', color: '#BB8FCE' },
+                { id: 'savings', label: 'Savings', color: '#85C1E9' },
+                { id: 'emergencyFund', label: 'Emergency Fund', color: '#82E0AA' },
+                { id: 'miscellaneous', label: 'Miscellaneous', color: '#F8C471' }
+            ];
+            
+            let chartHTML = '<div class="chart-container">';
+            let totalExpenses = 0;
+            
+            // Calculate total expenses first
+            categories.forEach(category => {
+                const value = parseFloat(document.getElementById(category.id).value) || 0;
+                totalExpenses += value;
+            });
+            
+            // Generate chart bars
+            categories.forEach(category => {
+                const value = parseFloat(document.getElementById(category.id).value) || 0;
+                if (value > 0) {
+                    const percentage = totalExpenses > 0 ? (value / totalExpenses * 100).toFixed(1) : 0;
+                    chartHTML += `
+                        <div class="chart-bar">
+                            <div class="bar-label">${category.label}</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: ${percentage}%; background-color: ${category.color}"></div>
+                            </div>
+                            <div class="bar-value">₹${value.toLocaleString()} (${percentage}%)</div>
+                        </div>
+                    `;
+                }
+            });
+            
+            chartHTML += '</div>';
+            document.getElementById('breakdownChart').innerHTML = chartHTML;
+        }
+
+        function generateOptimizationSuggestions(income, expenses, savings, savingsRate) {
+            const suggestions = [];
+            
+            if (savingsRate < 20) {
+                suggestions.push({
+                    priority: 'high',
+                    title: 'Increase Savings Rate',
+                    description: `Your current savings rate is ${savingsRate}%. Aim for at least 20% to build wealth faster.`,
+                    action: 'Review discretionary expenses and identify areas to cut back.'
+                });
+            }
+            
+            if (savingsRate < 0) {
+                suggestions.push({
+                    priority: 'critical',
+                    title: 'Emergency: Spending Exceeds Income',
+                    description: 'You are spending more than you earn. This is unsustainable and needs immediate attention.',
+                    action: 'Immediately reduce non-essential expenses and consider additional income sources.'
+                });
+            }
+            
+            const housing = parseFloat(document.getElementById('housing').value) || 0;
+            if (housing > income * 0.3) {
+                suggestions.push({
+                    priority: 'high',
+                    title: 'Housing Costs Too High',
+                    description: 'Housing costs should ideally be 30% or less of your income.',
+                    action: 'Consider downsizing, roommates, or negotiating rent reduction.'
+                });
+            }
+            
+            const debtPayments = parseFloat(document.getElementById('debtPayments').value) || 0;
+            if (debtPayments > income * 0.2) {
+                suggestions.push({
+                    priority: 'medium',
+                    title: 'High Debt Burden',
+                    description: 'Debt payments are consuming a significant portion of your income.',
+                    action: 'Focus on paying off high-interest debt first and avoid new debt.'
+                });
+            }
+            
+            const emergencyFund = parseFloat(document.getElementById('emergencyFund').value) || 0;
+            if (emergencyFund < expenses * 0.1) {
+                suggestions.push({
+                    priority: 'medium',
+                    title: 'Build Emergency Fund',
+                    description: 'Your emergency fund contribution is below recommended levels.',
+                    action: 'Aim to save 10% of monthly expenses for emergency fund building.'
+                });
+            }
+            
+            let suggestionsHTML = '';
+            suggestions.forEach(suggestion => {
+                const priorityClass = `priority-${suggestion.priority}`;
+                suggestionsHTML += `
+                    <div class="suggestion-item ${priorityClass}">
+                        <div class="suggestion-header">
+                            <span class="suggestion-title">${suggestion.title}</span>
+                            <span class="suggestion-priority ${priorityClass}">${suggestion.priority.toUpperCase()}</span>
+                        </div>
+                        <p class="suggestion-description">${suggestion.description}</p>
+                        <p class="suggestion-action"><strong>Action:</strong> ${suggestion.action}</p>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('suggestionsList').innerHTML = suggestionsHTML;
+        }
+
+        function generateActionPlan(income, expenses, savings, savingsRate) {
+            const actions = [];
+            
+            if (savingsRate < 20) {
+                actions.push({
+                    day: 'Days 1-7',
+                    action: 'Track every expense for a week to identify spending patterns'
+                });
+                actions.push({
+                    day: 'Days 8-14',
+                    action: 'Review and categorize all expenses, identify non-essential items'
+                });
+                actions.push({
+                    day: 'Days 15-21',
+                    action: 'Create a realistic budget with 20% savings target'
+                });
+                actions.push({
+                    day: 'Days 22-30',
+                    action: 'Implement budget and monitor progress daily'
+                });
+            } else {
+                actions.push({
+                    day: 'Days 1-7',
+                    action: 'Optimize current budget for maximum efficiency'
+                });
+                actions.push({
+                    day: 'Days 8-14',
+                    action: 'Research investment opportunities for surplus funds'
+                });
+                actions.push({
+                    day: 'Days 15-21',
+                    action: 'Set up automatic savings and investment transfers'
+                });
+                actions.push({
+                    day: 'Days 22-30',
+                    action: 'Review and plan for next month\'s financial goals'
+                });
+            }
+            
+            let actionsHTML = '';
+            actions.forEach(action => {
+                actionsHTML += `
+                    <div class="action-step">
+                        <div class="step-day">${action.day}</div>
+                        <div class="step-action">${action.action}</div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('actionSteps').innerHTML = actionsHTML;
+        }
+
+        function exportToPDF() {
+            // This would integrate with a PDF generation library
+            alert('PDF export functionality will be implemented with backend integration');
+        }
+
+        function shareResults() {
+            // This would implement social sharing or email functionality
+            alert('Share functionality will be implemented with backend integration');
+        }
+    </script>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
