@@ -466,10 +466,10 @@ def chatbot_query():
         elif any(word in user_message for word in ['retirement', 'pension', 'old age']):
             suggestions = ['Retirement planning', 'NPS investment', 'EPF planning', 'Pension planning', 'Senior citizen benefits']
         
-    return jsonify({
-        'success': True,
-        'response': response,
-        'suggestions': suggestions[:5]  # Limit to 5 suggestions
+        return jsonify({
+            'success': True,
+            'response': response,
+            'suggestions': suggestions[:5]  # Limit to 5 suggestions
         })
         
     except Exception as e:
