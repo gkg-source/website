@@ -1,0 +1,44 @@
+# Netlify ignore file - exclude backend files from frontend deployment
+
+# Backend files (not needed for static frontend)
+app.py
+requirements.txt
+Procfile
+*.py
+investment_guide.py
+budget_optimizer.py
+portfolio_optimizer.py
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Data files
+users.json
+errors.json
+analytics.json
+*.db
+*.sqlite
+
+# Environment files
+.env
+.env.local
+
+# Git
+.git/
+.gitignore
+
+# Documentation (optional - can include if you want)
+# DEPLOYMENT.md
+# GODADDY_DEPLOYMENT.md
+# QUICK_DEPLOY.md
+
