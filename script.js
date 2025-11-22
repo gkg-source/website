@@ -99,7 +99,7 @@ function isValidEmail(email) {
 }
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = '';
 
 // API Helper Functions
 async function apiCall(endpoint, data = null, method = 'GET') {
@@ -353,23 +353,91 @@ async function sendChatbotMessage() {
         input.value = '';
         
         try {
-            // Call Python backend API
-            const result = await apiCall('/api/chatbot/query', { message }, 'POST');
-            
-            if (result.success) {
+            const modeSelect = document.getElementById('aiModeSelect');
+            const aiMode = (modeSelect && modeSelect.value) || 'ollama'; // 'ollama' | 'classic'
+            let backendUsed = 'Classic';
+            let result = null;
+
+            if (aiMode === 'ollama') {
+                try {
+                    result = await apiCall('/api/chatbot/ollama', { message }, 'POST');
+                    if (result && result.success && result.response) {
+                        backendUsed = 'Ollama';
+                        const container = document.getElementById('chatbotMessages');
+                        if (container && result.response.length > 400) {
+                            simulateStreaming(container, result.response, 'bot');
+                        } else {
                 addChatbotMessage(result.response, 'bot');
-                
-                // Add suggestion buttons if available
+                        }
+                        updateAiBackendBadge(backendUsed);
+                        return;
+                    }
+                } catch (e) {
+                    // fall through to classic
+                }
+                // fallback to classic
+                result = await apiCall('/api/chatbot/query', { message }, 'POST');
+                if (result.success) {
+                    backendUsed = 'Classic';
+                    const container = document.getElementById('chatbotMessages');
+                    if (container && result.response && result.response.length > 400) {
+                        simulateStreaming(container, result.response, 'bot');
+                    } else {
+                        addChatbotMessage(result.response || 'Okay.', 'bot');
+                    }
+                    updateAiBackendBadge(backendUsed);
                 if (result.suggestions && result.suggestions.length > 0) {
                     addChatbotSuggestions(result.suggestions);
                 }
             } else {
                 addChatbotMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                }
+            } else {
+                // classic preferred
+                try {
+                    result = await apiCall('/api/chatbot/query', { message }, 'POST');
+                    if (result && result.success) {
+                        backendUsed = 'Classic';
+                        const container = document.getElementById('chatbotMessages');
+                        if (container && result.response && result.response.length > 400) {
+                            simulateStreaming(container, result.response, 'bot');
+                        } else {
+                            addChatbotMessage(result.response || 'Okay.', 'bot');
+                        }
+                        updateAiBackendBadge(backendUsed);
+                        if (result.suggestions && result.suggestions.length > 0) {
+                            addChatbotSuggestions(result.suggestions);
+                        }
+                        return;
+                    }
+                } catch (e) {
+                    // fall through to ollama
+                }
+                // fallback to ollama
+                result = await apiCall('/api/chatbot/ollama', { message }, 'POST');
+                if (result && result.success && result.response) {
+                    backendUsed = 'Ollama';
+                    const container = document.getElementById('chatbotMessages');
+                    if (container && result.response.length > 400) {
+                        simulateStreaming(container, result.response, 'bot');
+                    } else {
+                        addChatbotMessage(result.response, 'bot');
+                    }
+                    updateAiBackendBadge(backendUsed);
+                } else {
+                    addChatbotMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                }
             }
         } catch (error) {
             // Fallback to local responses if API fails
             const aiResponse = generateAIResponse(message);
+            const container = document.getElementById('chatbotMessages');
+            if (container && aiResponse.length > 400) {
+                simulateStreaming(container, aiResponse, 'bot');
+            } else {
             addChatbotMessage(aiResponse, 'bot');
+            }
+            updateAiBackendBadge('Local');
         }
     }
 }
@@ -406,6 +474,8 @@ function openChatbot() {
     const modal = document.getElementById('chatbotModal');
     if (modal) {
         modal.style.display = 'block';
+        // Ensure AI mode control is present
+        ensureAiModeControl();
         // Focus on input
         setTimeout(() => {
             const input = document.getElementById('chatbotInput') || document.getElementById('dashboardChatbotInput');
@@ -433,9 +503,46 @@ function addChatbotMessage(message, sender) {
     
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}-message`;
-    messageDiv.innerHTML = `<p>${message}</p>`;
+    messageDiv.innerHTML = `<p>${renderMarkdownBasic(message)}</p>`;
     messagesContainer.appendChild(messageDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    persistChatHistory(messagesContainer);
+}
+
+// Inject AI mode selector into chatbot header if not present
+function ensureAiModeControl() {
+    const header = document.querySelector('.chatbot-header');
+    if (!header || document.getElementById('aiModeSelect')) return;
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.alignItems = 'center';
+    wrapper.style.gap = '8px';
+    wrapper.style.marginLeft = 'auto';
+    wrapper.innerHTML = `
+        <label for="aiModeSelect" style="font-size: 0.85rem; color: var(--text-secondary);">AI mode</label>
+        <select id="aiModeSelect" style="padding: 6px 10px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--card-bg); color: var(--text-primary);">
+            <option value="ollama">Ollama</option>
+            <option value="classic">Classic</option>
+        </select>
+        <span id="aiBackendBadge" style="font-size: 0.75rem; padding: 4px 8px; border-radius: 999px; background: #eef2ff; color: #4f46e5;">—</span>
+    `;
+    header.appendChild(wrapper);
+}
+
+function updateAiBackendBadge(label) {
+    const badge = document.getElementById('aiBackendBadge');
+    if (!badge) return;
+    badge.textContent = label;
+    if (label === 'Ollama') {
+        badge.style.background = '#ecfdf5';
+        badge.style.color = '#065f46';
+    } else if (label === 'Classic') {
+        badge.style.background = '#eff6ff';
+        badge.style.color = '#1e40af';
+    } else {
+        badge.style.background = '#f3f4f6';
+        badge.style.color = '#374151';
+    }
 }
 
 function generateAIResponse(userMessage) {
@@ -496,6 +603,87 @@ function showNotification(message, type = 'info') {
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
+
+// ================
+// Chatbot UX extras
+// ================
+
+function escapeHtml(unsafe) {
+    return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function renderMarkdownBasic(text) {
+    // very lightweight renderer: bold, italics, code, links, line breaks
+    let html = escapeHtml(text);
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    html = html.replace(/\n/g, '<br>');
+    return html;
+}
+
+function simulateStreaming(containerEl, fullText, sender = 'bot', chunkSize = 30, delayMs = 30) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    const p = document.createElement('p');
+    messageDiv.appendChild(p);
+    containerEl.appendChild(messageDiv);
+    containerEl.scrollTop = containerEl.scrollHeight;
+
+    let index = 0;
+    function tick() {
+        const slice = fullText.slice(index, index + chunkSize);
+        index += chunkSize;
+        p.innerHTML = renderMarkdownBasic(fullText.slice(0, index));
+        containerEl.scrollTop = containerEl.scrollHeight;
+        if (index < fullText.length) {
+            setTimeout(tick, delayMs);
+        } else {
+            persistChatHistory(containerEl);
+        }
+    }
+    tick();
+}
+
+function persistChatHistory(containerEl) {
+    try {
+        const messages = [];
+        containerEl.querySelectorAll('.message').forEach(m => {
+            const role = m.classList.contains('user-message') ? 'user' : 'assistant';
+            const content = m.textContent || '';
+            messages.push({ role, content });
+        });
+        localStorage.setItem('chatHistory', JSON.stringify(messages));
+    } catch (e) {}
+}
+
+function restoreChatHistory() {
+    const container = document.getElementById('chatbotMessages');
+    if (!container) return;
+    try {
+        const raw = localStorage.getItem('chatHistory');
+        if (!raw) return;
+        const messages = JSON.parse(raw);
+        if (!Array.isArray(messages)) return;
+        container.innerHTML = '';
+        messages.forEach(m => {
+            const div = document.createElement('div');
+            div.className = `message ${m.role === 'user' ? 'user' : 'bot'}-message`;
+            div.innerHTML = `<p>${renderMarkdownBasic(m.content || '')}</p>`;
+            container.appendChild(div);
+        });
+        container.scrollTop = container.scrollHeight;
+    } catch (e) {}
+}
+
+// restore on open
+(function () {
+    document.addEventListener('DOMContentLoaded', restoreChatHistory);
+})();
 
 // Add smooth transitions to all interactive elements
 document.addEventListener('DOMContentLoaded', () => {
@@ -1022,5 +1210,111 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(document.body, { childList: true, subtree: true });
         // Auto-stop after a short period
         setTimeout(() => observer.disconnect(), 5000);
+    }
+});
+
+// =============================
+// Error Logging & Analytics
+// =============================
+
+const ErrorLogger = {
+    // Log errors to backend
+    async logError(error, context = {}) {
+        const errorData = {
+            message: error.message || String(error),
+            stack: error.stack || '',
+            url: window.location.href,
+            userAgent: navigator.userAgent,
+            timestamp: new Date().toISOString(),
+            context: context
+        };
+
+        // Try to send to backend
+        try {
+            await fetch('/api/errors/log', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(errorData)
+            });
+        } catch (e) {
+            // Fallback: log to console if backend unavailable
+            console.error('Error logging failed:', e);
+            console.error('Original error:', errorData);
+        }
+    },
+
+    // Track custom events for analytics
+    trackEvent(eventName, properties = {}) {
+        // Plausible analytics (if available)
+        if (window.plausible) {
+            window.plausible(eventName, { props: properties });
+        }
+        
+        // Also log to backend for custom analytics
+        try {
+            fetch('/api/analytics/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: eventName,
+                    properties: properties,
+                    timestamp: new Date().toISOString(),
+                    url: window.location.href
+                })
+            }).catch(() => {}); // Silent fail for analytics
+        } catch (e) {
+            // Silent fail
+        }
+    }
+};
+
+// Global error handlers
+window.addEventListener('error', (event) => {
+    ErrorLogger.logError(event.error || new Error(event.message), {
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+        type: 'javascript_error'
+    });
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    ErrorLogger.logError(event.reason || new Error('Unhandled Promise Rejection'), {
+        type: 'unhandled_promise_rejection'
+    });
+});
+
+// Track page views
+if (typeof window !== 'undefined') {
+    ErrorLogger.trackEvent('page_view', {
+        path: window.location.pathname,
+        referrer: document.referrer
+    });
+}
+
+// Track important user actions
+document.addEventListener('click', (e) => {
+    const target = e.target.closest('a, button, [role="button"]');
+    if (target) {
+        const text = target.textContent?.trim() || target.getAttribute('aria-label') || '';
+        const href = target.getAttribute('href') || '';
+        if (text || href) {
+            ErrorLogger.trackEvent('click', {
+                element: target.tagName.toLowerCase(),
+                text: text.substring(0, 50),
+                href: href.substring(0, 100)
+            });
+        }
+    }
+}, true);
+
+// Track form submissions
+document.addEventListener('submit', (e) => {
+    const form = e.target;
+    if (form.tagName === 'FORM') {
+        ErrorLogger.trackEvent('form_submit', {
+            formId: form.id || form.name || 'unnamed',
+            action: form.action || ''
+        });
     }
 });

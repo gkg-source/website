@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Help & FAQ - Get answers to common questions about Ghar Ka Guide's financial tools and services">
+    <meta name="keywords" content="help, FAQ, support, financial tools, budget optimizer, investment guide, customer support">
+    <meta name="author" content="Ghar Ka Guide Private Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Help & FAQ - Ghar Ka Guide">
+    <meta property="og:description" content="Get answers to common questions about our financial tools">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://gharkaguide.com/help">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Help & FAQ - Ghar Ka Guide">
+    <meta name="twitter:description" content="Get answers to common questions">
+    <meta name="twitter:image" content="logo.png">
+    
+    <title>Help & FAQ - Ghar Ka Guide</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <script defer data-domain="gharkaguide.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Ghar Ka Guide" class="logo-img">
+                    <h2>Ghar Ka Guide</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#tools" class="nav-link">Finance Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a href="help.html" class="nav-link active">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link btn-login">Login</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Help Hero Section -->
+    <section class="help-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>How Can We Help You?</h1>
+                <p>Find answers to common questions and get support for our financial tools</p>
+                <div class="search-bar">
+                    <input type="text" id="helpSearch" placeholder="Search for help...">
+                    <button onclick="searchHelp()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Categories -->
+    <section class="help-categories">
+        <div class="container">
+            <h2 class="section-title">Quick Help</h2>
+            <div class="categories-grid">
+                <div class="help-category-card" onclick="scrollToSection('getting-started')">
+                    <div class="category-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>Learn how to use our platform</p>
+                </div>
+                <div class="help-category-card" onclick="scrollToSection('budget-tool')">
+                    <div class="category-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Budget Optimizer</h3>
+                    <p>Help with budget planning</p>
+                </div>
+                <div class="help-category-card" onclick="scrollToSection('investment-tool')">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Investment Guide</h3>
+                    <p>Investment planning assistance</p>
+                </div>
+                <div class="help-category-card" onclick="scrollToSection('account-issues')">
+                    <div class="category-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Account & Login</h3>
+                    <p>Account management help</p>
+                </div>
+                <div class="help-category-card" onclick="scrollToSection('technical-issues')">
+                    <div class="category-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Technical Support</h3>
+                    <p>Technical problems & bugs</p>
+                </div>
+                <div class="help-category-card" onclick="scrollToSection('billing')">
+                    <div class="category-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Billing & Payments</h3>
+                    <p>Payment and subscription help</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <!-- Getting Started FAQ -->
+            <div class="faq-category" id="getting-started">
+                <h3 class="faq-category-title">
+                    <i class="fas fa-rocket"></i>
+                    Getting Started
+                </h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>How do I create an account?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Creating an account is simple! Click the "Login" button in the top navigation, then select "Sign Up" on the login page. Fill in your name, email, and password, and you'll be ready to start using our financial tools.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Is Ghar Ka Guide free to use?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Our basic financial tools are completely free to use. We offer premium features for advanced analytics and personalized recommendations, but you can access most of our functionality without any cost.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>What financial tools are available?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer several powerful tools: Budget Optimizer for expense tracking and budget planning, Investment Guide for portfolio management and investment advice, and an AI-powered chatbot for instant financial guidance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Tool FAQ -->
+            <div class="faq-category" id="budget-tool">
+                <h3 class="faq-category-title">
+                    <i class="fas fa-calculator"></i>
+                    Budget Optimizer
+                </h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>How does the Budget Optimizer work?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our Budget Optimizer analyzes your income and expenses to provide personalized recommendations. Simply input your monthly income and categorize your expenses, and our AI will suggest optimal spending limits and savings targets.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Can I track multiple income sources?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! You can add primary income, secondary income (freelancing, investments), and other income sources. The tool will automatically calculate your total monthly income for budget planning.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>How accurate are the budget recommendations?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our recommendations are based on proven financial principles like the 50/30/20 rule and industry best practices. However, personal circumstances vary, so we encourage you to adjust the suggestions to fit your specific needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Tool FAQ -->
+            <div class="faq-category" id="investment-tool">
+                <h3 class="faq-category-title">
+                    <i class="fas fa-chart-pie"></i>
+                    Investment Guide
+                </h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>What investment options does the guide cover?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our Investment Guide covers mutual funds, stocks, fixed deposits, gold, bonds, and other popular investment vehicles in India. We provide risk assessment, return projections, and portfolio diversification advice.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>How does the risk assessment work?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We evaluate your age, income stability, investment experience, and financial goals to determine your risk tolerance. This helps us recommend appropriate investment strategies and asset allocation.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Can I get personalized investment advice?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Our AI-powered system provides personalized recommendations based on your profile. For complex financial situations, we recommend consulting with a certified financial advisor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Issues FAQ -->
+            <div class="faq-category" id="account-issues">
+                <h3 class="faq-category-title">
+                    <i class="fas fa-user-cog"></i>
+                    Account & Login
+                </h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>I forgot my password. How do I reset it?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>On the login page, click "Forgot Password?" and enter your email address. We'll send you a secure link to reset your password. Check your spam folder if you don't receive the email within a few minutes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Can I change my email address?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can update your email address in your profile settings. You'll need to verify the new email address before the change takes effect.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>How do I delete my account?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To delete your account, go to Profile Settings > Account Management > Delete Account. Please note that this action is irreversible and all your data will be permanently removed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Issues FAQ -->
+            <div class="faq-category" id="technical-issues">
+                <h3 class="faq-category-title">
+                    <i class="fas fa-tools"></i>
+                    Technical Support
+                </h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>The website is loading slowly. What should I do?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Try refreshing the page or clearing your browser cache. If the problem persists, check your internet connection or try using a different browser. You can also contact our support team for assistance.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>I'm getting an error message. What does it mean?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Error messages usually indicate a temporary issue or invalid input. Try refreshing the page or checking your input data. If the error persists, please contact our support team with the exact error message.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Is my data secure?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we use industry-standard encryption to protect your data. All information is stored securely and we never share your personal financial data with third parties without your consent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing FAQ -->
+            <div class="faq-category" id="billing">
+                <h3 class="faq-category-title">
+                    <i class="fas fa-credit-card"></i>
+                    Billing & Payments
+                </h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>What payment methods do you accept?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards, debit cards, UPI, net banking, and digital wallets like Paytm, PhonePe, and Google Pay for premium subscriptions.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Can I cancel my subscription anytime?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can cancel your subscription at any time from your account settings. Your premium features will remain active until the end of your current billing period.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h4>Do you offer refunds?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a 30-day money-back guarantee for new subscribers. If you're not satisfied with our premium features, contact our support team within 30 days for a full refund.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support Section -->
+    <section class="contact-support">
+        <div class="container">
+            <div class="support-content">
+                <h2>Still Need Help?</h2>
+                <p>Can't find what you're looking for? Our support team is here to help you.</p>
+                <div class="support-options">
+                    <div class="support-option">
+                        <div class="support-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Live Chat</h3>
+                        <p>Chat with our AI assistant for instant help</p>
+                        <button class="btn btn-primary" onclick="openChatbot()">Start Chat</button>
+                    </div>
+                    <div class="support-option">
+                        <div class="support-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Support</h3>
+                        <p>Send us an email and we'll respond within 24 hours</p>
+                        <a href="mailto:support@gharkaguide.com" class="btn btn-secondary">Send Email</a>
+                    </div>
+                    <div class="support-option">
+                        <div class="support-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone Support</h3>
+                        <p>Call us for urgent issues and complex queries</p>
+                        <a href="tel:+91-9876543210" class="btn btn-outline">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Ghar Ka Guide" class="footer-logo-img">
+                        <h3>Ghar Ka Guide</h3>
+                    </div>
+                    <p>Empowering families with smart financial tools and expert guidance for a secure future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="help.html">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Tools</h3>
+                    <ul>
+                        <li><a href="budget-optimizer.html">Budget Optimizer</a></li>
+                        <li><a href="investment-guide.html">Investment Guide</a></li>
+                        <li><a href="#" onclick="openChatbot()">AI Assistant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ghar Ka Guide Private Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Help page functionality
+        function searchHelp() {
+            const searchTerm = document.getElementById('helpSearch').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('h4').textContent.toLowerCase();
+                const answer = item.querySelector('p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = '0';
+                    item.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+            
+            if (faqItem.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.style.maxHeight = '0';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Search on Enter key
+        document.getElementById('helpSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchHelp();
+            }
+        });
+
+        // Initialize FAQ items
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const answer = item.querySelector('.faq-answer');
+                answer.style.maxHeight = '0';
+            });
+        });
+    </script>
+</body>
+</html>

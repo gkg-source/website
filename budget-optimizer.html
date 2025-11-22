@@ -26,6 +26,14 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script defer data-domain="gharkaguide.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="tool-body">
     <!-- Navigation -->
@@ -321,6 +329,9 @@
             const other = parseFloat(document.getElementById('otherIncome').value) || 0;
             const total = primary + secondary + other;
             document.getElementById('totalIncome').value = total;
+            
+            // Update real-time budget analysis
+            updateBudgetAnalysis();
             return total;
         }
 
@@ -337,7 +348,76 @@
             });
             
             document.getElementById('totalExpenses').value = total;
+            
+            // Update real-time budget analysis
+            updateBudgetAnalysis();
             return total;
+        }
+
+        // Real-time budget analysis
+        function updateBudgetAnalysis() {
+            const income = calculateTotalIncome();
+            const expenses = calculateTotalExpenses();
+            const savings = income - expenses;
+            const savingsRate = income > 0 ? (savings / income * 100) : 0;
+            
+            // Update summary display if it exists
+            const summaryDiv = document.getElementById('summaryIncome');
+            if (summaryDiv) {
+                document.getElementById('summaryIncome').textContent = `₹${income.toLocaleString()}`;
+                document.getElementById('summaryExpenses').textContent = `₹${expenses.toLocaleString()}`;
+                document.getElementById('summarySavings').textContent = `₹${savings.toLocaleString()}`;
+                document.getElementById('summarySavingsRate').textContent = `${savingsRate.toFixed(1)}%`;
+            }
+            
+            // Update progress indicators
+            updateProgressIndicators(income, expenses, savings, savingsRate);
+        }
+
+        // Update progress indicators
+        function updateProgressIndicators(income, expenses, savings, savingsRate) {
+            // Housing cost indicator
+            const housing = parseFloat(document.getElementById('housing').value) || 0;
+            const housingRate = income > 0 ? (housing / income * 100) : 0;
+            updateCategoryIndicator('housing', housingRate, 30, 'Housing should be ≤30% of income');
+            
+            // Debt payment indicator
+            const debt = parseFloat(document.getElementById('debtPayments').value) || 0;
+            const debtRate = income > 0 ? (debt / income * 100) : 0;
+            updateCategoryIndicator('debtPayments', debtRate, 20, 'Debt payments should be ≤20% of income');
+            
+            // Savings rate indicator
+            updateCategoryIndicator('savings', savingsRate, 20, 'Target savings rate: 20%+');
+        }
+
+        // Update individual category indicator
+        function updateCategoryIndicator(categoryId, currentRate, targetRate, tooltip) {
+            const input = document.getElementById(categoryId);
+            if (!input) return;
+            
+            // Remove existing indicator
+            const existingIndicator = input.parentNode.querySelector('.category-indicator');
+            if (existingIndicator) {
+                existingIndicator.remove();
+            }
+            
+            // Add new indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'category-indicator';
+            indicator.title = tooltip;
+            
+            const percentage = Math.min(currentRate, 100);
+            const isGood = currentRate <= targetRate;
+            
+            indicator.innerHTML = `
+                <div class="indicator-bar">
+                    <div class="indicator-fill ${isGood ? 'good' : 'warning'}" 
+                         style="width: ${percentage}%"></div>
+                </div>
+                <span class="indicator-text">${currentRate.toFixed(1)}%</span>
+            `;
+            
+            input.parentNode.appendChild(indicator);
         }
 
         // Add event listeners for auto-calculation
@@ -588,6 +668,11 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').catch(console.error);
+    }
+    </script>
 </body>
 </html>
 

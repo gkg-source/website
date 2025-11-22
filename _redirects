@@ -1,0 +1,2 @@
+/api/*  https://YOUR-RENDER-SUBDOMAIN.onrender.com/api/:splat  200
+

@@ -1,0 +1,60 @@
+# Ghar Ka Guide - Apache Configuration for GoDaddy
+# Replace YOUR-RENDER-URL.onrender.com with your actual backend URL
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# API Proxy to Backend (Render or GoDaddy VPS)
+# If using Render, uncomment this:
+# RewriteCond %{REQUEST_URI} ^/api/(.*)$
+# RewriteRule ^api/(.*)$ https://YOUR-RENDER-URL.onrender.com/api/$1 [P,L]
+
+# If backend is on same server (GoDaddy VPS), uncomment this instead:
+# RewriteCond %{REQUEST_URI} ^/api/(.*)$
+# RewriteRule ^api/(.*)$ http://127.0.0.1:5000/api/$1 [P,L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "DENY"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Content-Security-Policy "default-src 'self' https://YOUR-RENDER-URL.onrender.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://plausible.io; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://plausible.io"
+</IfModule>
+
+# Enable CORS (if needed)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# Cache Control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(json|log|env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+

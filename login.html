@@ -26,6 +26,13 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script defer data-domain="gharkaguide.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="auth-body">
     <!-- Navigation -->
@@ -95,7 +102,7 @@
                         <span class="checkmark"></span>
                         Remember me
                     </label>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <a href="#" class="forgot-password" id="forgotPasswordLink">Forgot Password?</a>
                 </div>
                 <button type="submit" class="btn btn-primary btn-full">Login</button>
                 <p class="auth-switch">
@@ -159,8 +166,87 @@
         </div>
     </div>
 
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal" style="display:none;">
+        <div class="modal-content" style="max-width:480px;">
+            <div class="modal-header">
+                <h3>Reset Password</h3>
+                <button class="close" onclick="closeForgotModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="forgotStepEmail">
+                    <label>Email</label>
+                    <input type="email" id="fpEmail" placeholder="you@example.com">
+                    <button class="btn btn-primary" style="margin-top:12px;" onclick="requestOtp()">Send OTP</button>
+                </div>
+                <div id="forgotStepOtp" style="display:none;">
+                    <label>OTP sent to your email</label>
+                    <input type="text" id="fpOtp" placeholder="Enter 6-digit OTP">
+                    <label style="margin-top:12px;">New Password</label>
+                    <input type="password" id="fpNewPassword" placeholder="New password (min 6 chars)">
+                    <button class="btn btn-primary" style="margin-top:12px;" onclick="resetPassword()">Reset Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
+        // Forgot password flow
+        document.getElementById('forgotPasswordLink').addEventListener('click', function(e){
+            e.preventDefault();
+            document.getElementById('forgotPasswordModal').style.display = 'block';
+            document.getElementById('forgotStepEmail').style.display = 'block';
+            document.getElementById('forgotStepOtp').style.display = 'none';
+        });
+        function closeForgotModal(){
+            document.getElementById('forgotPasswordModal').style.display = 'none';
+        }
+        async function requestOtp(){
+            const email = document.getElementById('fpEmail').value.trim();
+            if (!email) { showNotification('Enter your email', 'error'); return; }
+            try {
+                const res = await fetch('/api/auth/request-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showNotification('OTP sent. Check your email.', 'success');
+                    document.getElementById('forgotStepEmail').style.display = 'none';
+                    document.getElementById('forgotStepOtp').style.display = 'block';
+                } else {
+                    showNotification(data.error || 'Failed sending OTP', 'error');
+                }
+            } catch (e) {
+                showNotification('Network error. Try again.', 'error');
+            }
+        }
+        async function resetPassword(){
+            const email = document.getElementById('fpEmail').value.trim();
+            const otp = document.getElementById('fpOtp').value.trim();
+            const newPassword = document.getElementById('fpNewPassword').value.trim();
+            if (!otp || !newPassword) { showNotification('Enter OTP and new password', 'error'); return; }
+            if (newPassword.length < 6) { showNotification('Password must be 6+ chars', 'error'); return; }
+            try {
+                const res = await fetch('/api/auth/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, otp, new_password: newPassword })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showNotification('Password reset. Please login.', 'success');
+                    closeForgotModal();
+                    switchForm('login');
+                } else {
+                    showNotification(data.error || 'Failed to reset password', 'error');
+                }
+            } catch (e) {
+                showNotification('Network error. Try again.', 'error');
+            }
+        }
         // Form switching functionality
         function switchForm(formType) {
             const loginForm = document.getElementById('loginForm');
@@ -204,7 +290,7 @@
             submitBtn.disabled = true;
             
             // Call authentication API
-            fetch('http://localhost:5000/api/auth/login', {
+            fetch('/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -262,7 +348,7 @@
             submitBtn.disabled = true;
             
             // Call authentication API
-            fetch('http://localhost:5000/api/auth/signup', {
+            fetch('/api/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -369,6 +455,11 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').catch(console.error);
+    }
+    </script>
 </body>
 </html>
 

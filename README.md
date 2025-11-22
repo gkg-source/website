@@ -202,27 +202,53 @@ POST /api/chatbot/query
 - **JavaScript**: Event delegation and efficient DOM manipulation
 - **Caching**: Browser caching optimization ready
 
-## 🚀 Deployment Options
+## 🚀 Deployment
 
-### **GitHub Pages**
-1. Push code to GitHub repository
-2. Enable GitHub Pages in settings
-3. Access at `https://username.github.io/repository-name`
+### **Quick Deploy (Recommended)**
 
-### **Netlify**
-1. Drag and drop website folder
-2. Get instant deployment with custom domain
-3. Automatic HTTPS and CDN
+**See `QUICK_DEPLOY.md` for step-by-step instructions!**
 
-### **Vercel**
-1. Connect GitHub repository
-2. Automatic deployments on push
-3. Serverless functions support
+This website is configured for deployment on:
+- **Frontend**: Netlify (static hosting)
+- **Backend**: Render (Python/Flask API)
 
-### **Traditional Hosting**
-1. Upload files to web server
-2. Configure domain and SSL
-3. Set up backend integration
+### **Deployment Files Included**
+- `Procfile` - For Render backend deployment
+- `_redirects` - Netlify API proxy configuration
+- `netlify.toml` - Netlify security headers and redirects
+- `.gitignore` - Excludes sensitive files from Git
+- `requirements.txt` - Python dependencies
+
+### **Quick Start**
+1. Push code to GitHub
+2. Deploy backend to Render (see `DEPLOYMENT.md`)
+3. Deploy frontend to Netlify (see `DEPLOYMENT.md`)
+4. Update `_redirects` and `netlify.toml` with your Render URL
+5. Done! Your site is live 🎉
+
+### **GoDaddy Hosting**
+
+**See `GODADDY_DEPLOYMENT.md` for complete instructions!**
+
+- **Frontend**: Upload to GoDaddy shared hosting via cPanel/FTP
+- **Backend**: Recommended to keep on Render (free) or deploy to GoDaddy VPS
+- Uses `.htaccess` for API proxying and security headers
+- Includes SSL configuration and caching
+
+### **Other Deployment Options**
+
+**GitHub Pages**
+- Frontend only (no backend support)
+- Good for static sites without API
+
+**Vercel**
+- Similar to Netlify
+- Good serverless function support
+
+**Traditional Hosting**
+- Upload files to web server
+- Configure domain and SSL
+- Set up backend integration
 
 ## 🔧 Development Tips
 

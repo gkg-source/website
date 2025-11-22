@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Financial Blog - Expert insights, tips, and guides on personal finance, investments, and money management for Indian families">
+    <meta name="keywords" content="financial blog, personal finance tips, investment advice, money management, financial planning, Indian finance">
+    <meta name="author" content="Ghar Ka Guide Private Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Financial Blog - Ghar Ka Guide">
+    <meta property="og:description" content="Expert financial insights and tips for Indian families">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://gharkaguide.com/blog">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Financial Blog - Ghar Ka Guide">
+    <meta name="twitter:description" content="Expert financial insights and tips">
+    <meta name="twitter:image" content="logo.png">
+    
+    <title>Financial Blog - Ghar Ka Guide</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script defer data-domain="gharkaguide.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Ghar Ka Guide" class="logo-img">
+                    <h2>Ghar Ka Guide</h2>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#tools" class="nav-link">Finance Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link active">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link btn-login">Login</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Financial Insights & Tips</h1>
+                <p>Expert advice, market insights, and practical tips to help you make smarter financial decisions</p>
+                <div class="search-bar">
+                    <input type="text" id="blogSearch" placeholder="Search articles...">
+                    <button onclick="searchArticles()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Featured Article</p>
+                    </div>
+                </div>
+                <div class="featured-text">
+                    <span class="featured-badge">Featured</span>
+                    <h2>Complete Guide to SIP Investment for Beginners</h2>
+                    <p>Learn how Systematic Investment Plans (SIPs) can help you build wealth over time, even with small monthly investments. This comprehensive guide covers everything from choosing the right funds to maximizing your returns.</p>
+                    <div class="article-meta">
+                        <span class="author">
+                            <i class="fas fa-user"></i>
+                            Rajesh Kumar
+                        </span>
+                        <span class="date">
+                            <i class="fas fa-calendar"></i>
+                            December 15, 2024
+                        </span>
+                        <span class="read-time">
+                            <i class="fas fa-clock"></i>
+                            8 min read
+                        </span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Read Full Article</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterByCategory('investment')">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Investment</h3>
+                    <p>Mutual funds, stocks, and portfolio management</p>
+                    <span class="article-count">12 articles</span>
+                </div>
+                <div class="category-card" onclick="filterByCategory('savings')">
+                    <div class="category-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Savings</h3>
+                    <p>Budgeting, emergency funds, and saving strategies</p>
+                    <span class="article-count">8 articles</span>
+                </div>
+                <div class="category-card" onclick="filterByCategory('tax')">
+                    <div class="category-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Tax Planning</h3>
+                    <p>Tax-saving investments and strategies</p>
+                    <span class="article-count">6 articles</span>
+                </div>
+                <div class="category-card" onclick="filterByCategory('insurance')">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Insurance</h3>
+                    <p>Life, health, and general insurance</p>
+                    <span class="article-count">5 articles</span>
+                </div>
+                <div class="category-card" onclick="filterByCategory('retirement')">
+                    <div class="category-icon">
+                        <i class="fas fa-umbrella"></i>
+                    </div>
+                    <h3>Retirement</h3>
+                    <p>Retirement planning and pension strategies</p>
+                    <span class="article-count">7 articles</span>
+                </div>
+                <div class="category-card" onclick="filterByCategory('debt')">
+                    <div class="category-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Debt Management</h3>
+                    <p>Credit cards, loans, and debt consolidation</p>
+                    <span class="article-count">4 articles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Articles -->
+    <section class="blog-articles">
+        <div class="container">
+            <div class="articles-header">
+                <h2 class="section-title">Latest Articles</h2>
+                <div class="filter-controls">
+                    <select id="categoryFilter" onchange="filterArticles()">
+                        <option value="all">All Categories</option>
+                        <option value="investment">Investment</option>
+                        <option value="savings">Savings</option>
+                        <option value="tax">Tax Planning</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="retirement">Retirement</option>
+                        <option value="debt">Debt Management</option>
+                    </select>
+                    <select id="sortFilter" onchange="sortArticles()">
+                        <option value="latest">Latest First</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Article 1 -->
+                <article class="article-card" data-category="investment" data-date="2024-12-15">
+                    <div class="article-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="article-category">Investment</div>
+                    </div>
+                    <div class="article-content">
+                        <h3>How to Choose the Right Mutual Fund for Your Goals</h3>
+                        <p>Learn the key factors to consider when selecting mutual funds, including expense ratios, past performance, and fund manager expertise.</p>
+                        <div class="article-meta">
+                            <span class="author">
+                                <i class="fas fa-user"></i>
+                                Priya Sharma
+                            </span>
+                            <span class="date">
+                                <i class="fas fa-calendar"></i>
+                                Dec 15, 2024
+                            </span>
+                            <span class="read-time">
+                                <i class="fas fa-clock"></i>
+                                6 min read
+                            </span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card" data-category="savings" data-date="2024-12-12">
+                    <div class="article-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="article-category">Savings</div>
+                    </div>
+                    <div class="article-content">
+                        <h3>Building an Emergency Fund: A Step-by-Step Guide</h3>
+                        <p>Discover how to build a robust emergency fund that can protect you during financial uncertainties and unexpected expenses.</p>
+                        <div class="article-meta">
+                            <span class="author">
+                                <i class="fas fa-user"></i>
+                                Amit Patel
+                            </span>
+                            <span class="date">
+                                <i class="fas fa-calendar"></i>
+                                Dec 12, 2024
+                            </span>
+                            <span class="read-time">
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card" data-category="tax" data-date="2024-12-10">
+                    <div class="article-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="article-category">Tax Planning</div>
+                    </div>
+                    <div class="article-content">
+                        <h3>Top Tax-Saving Investments for FY 2024-25</h3>
+                        <p>Explore the best tax-saving investment options under Section 80C, 80D, and other sections to maximize your tax benefits.</p>
+                        <div class="article-meta">
+                            <span class="author">
+                                <i class="fas fa-user"></i>
+                                Anita Singh
+                            </span>
+                            <span class="date">
+                                <i class="fas fa-calendar"></i>
+                                Dec 10, 2024
+                            </span>
+                            <span class="read-time">
+                                <i class="fas fa-clock"></i>
+                                7 min read
+                            </span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card" data-category="insurance" data-date="2024-12-08">
+                    <div class="article-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="article-category">Insurance</div>
+                    </div>
+                    <div class="article-content">
+                        <h3>Life Insurance vs Term Insurance: Which is Right for You?</h3>
+                        <p>Compare different types of life insurance policies and understand which one aligns with your financial goals and family needs.</p>
+                        <div class="article-meta">
+                            <span class="author">
+                                <i class="fas fa-user"></i>
+                                Rajesh Kumar
+                            </span>
+                            <span class="date">
+                                <i class="fas fa-calendar"></i>
+                                Dec 8, 2024
+                            </span>
+                            <span class="read-time">
+                                <i class="fas fa-clock"></i>
+                                9 min read
+                            </span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card" data-category="retirement" data-date="2024-12-05">
+                    <div class="article-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-umbrella"></i>
+                        </div>
+                        <div class="article-category">Retirement</div>
+                    </div>
+                    <div class="article-content">
+                        <h3>Retirement Planning: Start Early, Retire Rich</h3>
+                        <p>Learn why starting retirement planning in your 20s and 30s is crucial and how to build a substantial retirement corpus.</p>
+                        <div class="article-meta">
+                            <span class="author">
+                                <i class="fas fa-user"></i>
+                                Priya Sharma
+                            </span>
+                            <span class="date">
+                                <i class="fas fa-calendar"></i>
+                                Dec 5, 2024
+                            </span>
+                            <span class="read-time">
+                                <i class="fas fa-clock"></i>
+                                8 min read
+                            </span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card" data-category="debt" data-date="2024-12-03">
+                    <div class="article-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="article-category">Debt Management</div>
+                    </div>
+                    <div class="article-content">
+                        <h3>How to Get Out of Credit Card Debt: 5 Proven Strategies</h3>
+                        <p>Discover effective strategies to eliminate credit card debt and regain control of your financial life.</p>
+                        <div class="article-meta">
+                            <span class="author">
+                                <i class="fas fa-user"></i>
+                                Amit Patel
+                            </span>
+                            <span class="date">
+                                <i class="fas fa-calendar"></i>
+                                Dec 3, 2024
+                            </span>
+                            <span class="read-time">
+                                <i class="fas fa-clock"></i>
+                                6 min read
+                            </span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-section">
+                <button class="btn btn-secondary" onclick="loadMoreArticles()">
+                    <i class="fas fa-plus"></i>
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated with Financial Insights</h2>
+                <p>Get the latest articles, market updates, and financial tips delivered to your inbox weekly.</p>
+                <form class="newsletter-form" id="blogNewsletterForm">
+                    <div class="newsletter-input-group">
+                        <input type="email" id="blogNewsletterEmail" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                    <div class="newsletter-privacy">
+                        <small>We respect your privacy. Unsubscribe at any time.</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Ghar Ka Guide" class="footer-logo-img">
+                        <h3>Ghar Ka Guide</h3>
+                    </div>
+                    <p>Empowering families with smart financial tools and expert guidance for a secure future.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Tools</h3>
+                    <ul>
+                        <li><a href="budget-optimizer.html">Budget Optimizer</a></li>
+                        <li><a href="investment-guide.html">Investment Guide</a></li>
+                        <li><a href="#" onclick="openChatbot()">AI Assistant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ghar Ka Guide Private Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Dynamic blog post loader (lightweight CMS)
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const res = await fetch('posts/index.json', { cache: 'no-store' });
+                if (!res.ok) return;
+                const posts = await res.json();
+                if (!Array.isArray(posts)) return;
+                const grid = document.getElementById('articlesGrid');
+                posts.forEach(post => {
+                    const card = document.createElement('article');
+                    card.className = 'article-card';
+                    card.setAttribute('data-category', (post.category || 'general').toLowerCase());
+                    card.setAttribute('data-date', post.date || '');
+                    card.innerHTML = `
+                        <div class="article-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="article-category">${post.category || 'General'}</div>
+                        </div>
+                        <div class="article-content">
+                            <h3>${post.title}</h3>
+                            <p>${post.excerpt || ''}</p>
+                            <div class="article-meta">
+                                <span class="author"><i class="fas fa-user"></i> ${post.author || 'GKG Team'}</span>
+                                <span class="date"><i class="fas fa-calendar"></i> ${post.displayDate || ''}</span>
+                                <span class="read-time"><i class="fas fa-clock"></i> ${post.readTime || '5 min'} read</span>
+                            </div>
+                            <a href="posts/${post.slug}.md" class="read-more" target="_blank" rel="noopener">Read Markdown <i class="fas fa-arrow-right"></i></a>
+                        </div>`;
+                    grid.prepend(card);
+                });
+            } catch (e) {}
+        });
+
+        // Blog functionality
+        function searchArticles() {
+            const searchTerm = document.getElementById('blogSearch').value.toLowerCase();
+            const articles = document.querySelectorAll('.article-card');
+            
+            articles.forEach(article => {
+                const title = article.querySelector('h3').textContent.toLowerCase();
+                const content = article.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        function filterByCategory(category) {
+            const articles = document.querySelectorAll('.article-card');
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            categoryFilter.value = category;
+            filterArticles();
+        }
+
+        function filterArticles() {
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const articles = document.querySelectorAll('.article-card');
+            
+            articles.forEach(article => {
+                const articleCategory = article.getAttribute('data-category');
+                
+                if (selectedCategory === 'all' || articleCategory === selectedCategory) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        function sortArticles() {
+            const sortBy = document.getElementById('sortFilter').value;
+            const articlesGrid = document.getElementById('articlesGrid');
+            const articles = Array.from(articlesGrid.querySelectorAll('.article-card'));
+            
+            articles.sort((a, b) => {
+                if (sortBy === 'latest') {
+                    return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                } else if (sortBy === 'oldest') {
+                    return new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date'));
+                } else if (sortBy === 'popular') {
+                    // For demo purposes, randomize for "popular"
+                    return Math.random() - 0.5;
+                }
+            });
+            
+            // Clear and re-append sorted articles
+            articlesGrid.innerHTML = '';
+            articles.forEach(article => articlesGrid.appendChild(article));
+        }
+
+        function loadMoreArticles() {
+            // Simulate loading more articles
+            const loadMoreBtn = document.querySelector('.load-more-section button');
+            const originalText = loadMoreBtn.innerHTML;
+            
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            loadMoreBtn.disabled = true;
+            
+            setTimeout(() => {
+                loadMoreBtn.innerHTML = originalText;
+                loadMoreBtn.disabled = false;
+                showNotification('No more articles to load', 'info');
+            }, 1500);
+        }
+
+        // Newsletter form handling
+        document.getElementById('blogNewsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('blogNewsletterEmail').value;
+            
+            if (email) {
+                showNotification('Thank you for subscribing to our newsletter!', 'success');
+                this.reset();
+            }
+        });
+
+        // Search on Enter key
+        document.getElementById('blogSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchArticles();
+            }
+        });
+    </script>
+</body>
+</html>
