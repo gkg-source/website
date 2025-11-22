@@ -101,9 +101,65 @@ def generate_token(user_payload):
 def decode_token(token):
     return jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALG])
 
-# Initialize our tools
-investment_guide = InvestmentGuide()
-portfolio_optimizer = PortfolioOptimizer()
+
+# JWT Authentication Decorator
+from functools import wraps
+
+def jwt_required(f):
+    """Decorator to require JWT authentication"""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        token = None
+        
+        # Get token from Authorization header
+        auth_header = request.headers.get('Authorization')
+        if auth_header:
+            try:
+                # Format: "Bearer <token>"
+                token = auth_header.split(' ')[1] if ' ' in auth_header else auth_header
+            except IndexError:
+                return jsonify({'success': False, 'error': 'Invalid authorization header format'}), 401
+        
+        # If no token in header, try to get from request body
+        if not token:
+            data = request.get_json(silent=True) or {}
+            token = data.get('token') or data.get('authToken')
+        
+        if not token:
+            return jsonify({'success': False, 'error': 'Token is missing'}), 401
+        
+        try:
+            # Decode and verify token
+            payload = decode_token(token)
+            users = load_users()
+            user = get_user_by_email(users, payload.get('email'))
+            
+            if not user:
+                return jsonify({'success': False, 'error': 'User not found'}), 401
+            
+            # Create current_user object
+            current_user = {
+                'email': user.get('email'),
+                'name': user.get('name'),
+                'phone': user.get('phone'),
+                'profile': user.get('profile', {})
+            }
+            
+            # Call the original function with current_user
+            return f(current_user=current_user, *args, **kwargs)
+            
+        except jwt.ExpiredSignatureError:
+            return jsonify({'success': False, 'error': 'Token has expired'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'success': False, 'error': 'Invalid token'}), 401
+        except Exception as e:
+            return jsonify({'success': False, 'error': f'Authentication failed: {str(e)}'}), 401
+    
+    return decorated_function
+
+# Initialize our tools (with fallback if modules don't exist)
+investment_guide = InvestmentGuide() if InvestmentGuide else None
+portfolio_optimizer = PortfolioOptimizer() if PortfolioOptimizer else None
 
 @app.route('/')
 def home():
