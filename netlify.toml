@@ -1,9 +1,17 @@
 # Build settings for static site
 [build]
-  # No build command needed for static HTML/CSS/JS
-  command = ""
+  # Explicitly set to prevent Python auto-detection
+  command = "echo 'Static HTML site - no build needed'"
   # Publish directory is root (where HTML files are)
   publish = "."
+  
+# Explicitly tell Netlify this is NOT a Python project
+[build.environment]
+  # Force Node.js runtime (prevents Python detection)
+  NODE_VERSION = "18"
+  # Disable Python
+  SKIP_PYTHON_INSTALL = "true"
+  PYTHON_VERSION = ""
 
 [[redirects]]
   from = "/api/*"

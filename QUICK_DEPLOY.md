@@ -47,11 +47,46 @@ git push
 ```
 
 ### 4. Netlify Frontend (5 min)
-1. Go to https://app.netlify.com
-2. Add new site → Import from GitHub
-3. Select your repo
-4. Build settings: Leave empty (static site)
-5. Deploy → **Copy your URL**
+
+#### Step 4.1: Log in to Netlify
+1. Go to **https://app.netlify.com**
+2. Click **"Sign up"** (if new) or **"Log in"**
+3. Sign up with **GitHub** (recommended - easiest)
+
+#### Step 4.2: Add New Site
+1. Click **"Add new site"** button (top right or center)
+2. Select **"Import an existing project"**
+
+#### Step 4.3: Connect GitHub
+1. Click **"GitHub"** from the Git providers
+2. If first time: Click **"Authorize Netlify"** and grant access
+3. You'll see a list of your GitHub repositories
+
+#### Step 4.4: Select Your Repository
+1. Find and click on your repository (e.g., `ghar-ka-guide`)
+2. You can use the search box to find it quickly
+
+#### Step 4.5: Configure Build Settings
+**Important:** For a static site, leave these EMPTY:
+- **Branch to deploy**: `main` (usually pre-selected)
+- **Base directory**: Leave **EMPTY** (your files are in root)
+- **Build command**: Leave **EMPTY** (no build needed for static files)
+- **Publish directory**: Leave as `.` (root directory)
+
+#### Step 4.6: Deploy
+1. Review settings (all should be empty/default)
+2. Click **"Deploy site"** button (green, at bottom)
+3. Wait 1-3 minutes for deployment
+4. Watch the build logs in real-time
+
+#### Step 4.7: Get Your URL
+1. Once deployment completes, you'll see:
+   - ✅ Status: "Published"
+   - **Site URL** (e.g., `https://amazing-site-12345.netlify.app`)
+2. **Copy your URL** - Click the copy button or click the URL
+3. **Your site is now live!** 🎉
+
+**For detailed instructions, see `NETLIFY_DEPLOYMENT_DETAILED.md`**
 
 ### 5. Test (5 min)
 - Visit your Netlify URL
